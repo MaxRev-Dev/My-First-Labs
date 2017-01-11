@@ -1,0 +1,282 @@
+// Начало вопроса: 06. ВопрМножВыбор
+Алгоритм розв'язання задачі "голодних філософів". Який фрагмент вірно реалізує дію "спроба отримати  дві вилки": {
+~void test(i)    <br>\{     \{         state[i] \= EATING; <br>        up(&amp;s[i]);     \} <br>    if (state[i] \=\= HUNGRY &amp;&amp; state[LEFT] !\= EATING <br>&amp;&amp; state[RIGHT] \= EATING) <br>\}
+~void test(i)    <br>\{ <br>    if (state[i] \=\= HUNGRY &amp;&amp; state[LEFT] !\= EATING <br>&amp;&amp; state[RIGHT] !\= EATING) <br>    \{         state[i] \= EATING; <br>        up(&amp;s[i]);     \} <br>\}
+~void put_forks(i)     \{  <br>   up(&amp;mutex);   down(&amp;mutex);   <br>    test(LEFT);      test(RIGHT);      <br>    state[i] \= THINKING;  \}
+~void test(i)    <br>\{ state[LEFT] !\= EATING <br>&amp;&amp; state[RIGHT] !\= EATING)<br>    if (state[i] \=\= HUNGRY <br>    \{         state[i] \= EATING; <br>        up(&amp;s[i]);     \} <br>\}
+~void test(i)    <br>\{ up(&amp;s[i]);     <br>    if (state[i] \= HUNGRY &amp;&amp; state[LEFT] \= EATING <br>&amp;&amp; state[RIGHT] !\= EATING) <br>    \{         state[i] \= EATING; <br>        \} <br>\}
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+ Який фрагмент вірно реалізує організацію меню з двох пунктів: {
+~[menu]<br>menstart\=W98, Start 98.<br>menuitem\=NOW98, Start cMS.<br>menudefault\=W98,30<br>menucolor\=7,0<br> [W98]<br>[NOW98]<br>dos\=high,umb<br>devicehigh\= ramdrive.sys /E 2048<br>[COMMON]<br>files\=40
+~ [menu]<br>menuitem\=W98, Start 98.<br>menuitem\=NOW98, Start cMS.<br>menudefault\=W98,30<br>menucolor\=7,0<br> [W98]<br>[NOW98]<br>dos\=high,umb<br>devicehigh\= ramdrive.sys /E 2048<br>[COMMON]<br>files\=40
+~ [menu]<br>menuitem\=W98, Start 98.<br>menuend\=NOW98, Start cMS.<br>menudefault\=W98,30<br>menucolor\=7,0<br> [W98]<br>[NOW98]<br>dos\=high,umb<br>devicehigh\= ramdrive.sys /E 2048<br>[COMMON]<br>files\=40
+~[menuitem]<br>menu\=W98, Start 98.<br>menu\=NOW98, Start cMS.<br>menudefault\=W98,30<br>menucolor\=7,0<br> [W98]<br>[NOW98]<br>dos\=high,umb<br>devicehigh\= ramdrive.sys /E 2048<br>[COMMON]<br>files\=40
+~[menu]<br>menuitem\=W98, Start 98.<br>menuitem\=NOW98, Start cMS.<br>default\=W98,30<br>menucolor\=7,0<br> [W98dw]<br>[NOW98vd]<br>devicehigh\= ramdrive.sys /E 2048<br>[COMMON]<br>files\=40
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Який фрагмент вірнo реалізує органiзацію меню з двох пунктів: {
+~[menu]<br>menstart\=W98, Start 98.<br>menuitem\=NOW98, Start cMS.<br>menudefault\=W98,30<br>menucolor\=7,0<br> [W98]<br>[NOW98]<br>dos\=high,umb<br>devicehigh\= ramdrive.sys /E 2048<br>[COMMON]<br>files\=40
+~ [menu]<br>menuitem\=W98, Start 98.<br>menuitem\=NOW98, Start cMS.<br>menudefault\=W98,30<br>menucolor\=7,0<br> [W98]<br>[NOW98]<br>dos\=high,umb<br>devicehigh\= ramdrive.sys /E 2048<br>[COMMON]<br>files\=40
+~ [menu]<br>menuitem\=W98, Start 98.<br>menuend\=NOW98, Start cMS.<br>menudefault\=W98,30<br>menucolor\=7,0<br> [W98]<br>[NOW98]<br>dos\=high,umb<br>devicehigh\= ramdrive.sys /E 2048<br>[COMMON]<br>files\=40
+~[menuitem]<br>menu\=W98, Start 98.<br>menu\=NOW98, Start cMS.<br>menudefault\=W98,30<br>menucolor\=7,0<br> [W98]<br>[NOW98]<br>dos\=high,umb<br>devicehigh\= ramdrive.sys /E 2048<br>[COMMON]<br>files\=40
+~[menu]<br>menuitem\=W98, Start 98.<br>menuitem\=NOW98, Start cMS.<br>default\=W98,30<br>menucolor\=7,0<br> [W98dw]<br>[NOW98vd]<br>devicehigh\= ramdrive.sys /E 2048<br>[COMMON]<br>files\=40
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Який фрагмент вірно реалізує організацію меню з чотирьох пунктів: {
+~[menu]<br>menuitem\=P98, St.<br>menuitem\=NW, Start cMS.<br>menuitem\=N2, St.<br>menuitem\=N2, Start cMS.<br>menudefault\=W98,30<br>menucolor\=7,0<br> [NOW]<br>dos\=high,umb<br>[P98]<br>[P2]<br>[N1]<br> [COMMON]<br>dos\=high,umb
+~ [menu]<br>menuitem\=P98, St.<br>menuitem\=NOW, Start cMS.<br>menuitem\=P2, St.<br>menuitem\=N1, Start cMS.<br>menudefault\=W98,30<br>menucolor\=7,0<br> [NOW]<br>dos\=high,umb<br>[P98]<br>[P2]<br>[N1]<br> [COMMON]<br>dos\=high,umb 
+~ [menu]<br>menui\=P98, St.<br>menuitem\=NOW, Start cMS.<br>menuitem\=P2, St.<br>menuitem\=N1, Start cMS.<br>menu\=W98,30<br>[NOW]<br>dos\=high,umb<br>[P98]<br>[P2]<br>[N4]<br> [COMMON]<br>dos\=high,umb
+~[menu]<br>menuitem\=P98, St.<br>menuitem\=NOW, Start cMS.<br>menuitem\=P2, St.<br>menuistart\=N1, Start cMS.<br>menudefault\=W98,30<br>menucolor\=7,0<br> [NOW]<br>dos\=high,umb<br>[P98]<br>[P2]<br>[P2]<br> [COMMON]<br>dos\=high,umb
+~[menu]<br>menuitem\=P98, St.<br>menuitem\=P2, St.<br>menuitem\=N1, Start cMS.<br>menudefault\=W98,30<br>menucolor\=7,0<br> [NOW]<br>dos\=high,umb<br>[P98]<br>[P2]<br> [COMMON]<br>dos\=high,umb
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Який фрагмент вірно реалізує організацію вибору в bat-файлах: {
+~CHOICE /C:ANV   /N  Введіть A, N або V<br>IF ERROR 3 GOTO end<br>IF ERROR 2 GOTO NC<br>Msav<br>goto end<br>:nc<br>nc <br>goto end<br>: windows<br>win<br>:end
+~CHOICE /C:ANV   /N  Введіть A, N або V<br>IF ERRORLEVEL 3 GOTO windows<br>IF ERRORLEVEL 2 GOTO NC<br>Msav<br>goto end<br>:nc<br>nc <br>goto end<br>: windows<br>win<br>:end
+~CHOICE /C:ANV   /N  Введіть A, N <br>IF ERRORLEVEL 2 GOTO NC<br>Msav<br>goto end<br>:nc<br>nc <br>:end
+~VARIANT /C:ANV   /N  Введіть A, N або V<br>IF ERRORLEVEL 3 GOTO windows<br>IF ERRORLEVEL 2 GOTO NC<br>Msav<br>goto end<br>:nc<br>nc <br>goto end<br>: windows<br>win<br>:end
+~CHOICE /C:ANV   /N  Введіть A, N або V<br>case  3 GOTO windows<br>case 2 GOTO NC<br>:nc<br>nc <br>goto nc<br>: windows<br>win<br>:end
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Який фрагмент вірно реалізує передачу параметру в bat-файл та його перевірку: {
+~if exist "%1%"\\ goto notl<br>md %%1\\ddd<br>goto end<br>:notl<br>echo Диск %3 not found<br>goto end<br>:gol<br>echo Not name disk<br>:end
+~if not exist "%1"\\ goto notl<br>md %1\\ddd<br>goto end<br>:notl<br>echo Диск %1 not found<br>goto end<br>:gol<br>echo Not name disk<br>:end
+~if not exist "%1%"\\ goto notl<br>сd %1\\ddd<br>echo Диск %1 not found<br>goto end<br>:gol<br>echo Not name disk<br>:end
+~md %1%\\ddd<br>goto end<br>if not exist "%%1"\\ goto notl:notl<br>echo Диск %1 not found<br>goto end<br>:gol<br>echo Not name disk<br>:endс
+~CHOICE /C:ANV   /N  Введіть A, N або V<br>case  3 GOTO windows<br>case 2 GOTO NC<br>win<br>:end
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Який фрагмент вірно реалізує вибір пунктів в bat-файлі відповідно до меню конфігураційного файлу: {
+~IF "%config%"\=\="W98" GOTO С<br>path\=C:\\BIT;C:\\BIN;C:\\;F:\\TP;<br>e:\\nc\\nc<br>GOTO Q<br>:EW98<br>path\=C:\\ODAPI;%PATH%<br>:QUIT
+~IF "%config%"\=\="W98" GOTO EW98<br>path\=C:\\BIT;C:\\BIN;C:\\;F:\\TP;<br>e:\\nc\\nc<br>GOTO QUIT<br>:EW98<br>path\=C:\\ODAPI;%PATH%<br>:QUIT
+~if not exist "%1%"\\ goto notl<br>сd %1\\ddd<br>echo Диск %1 not found<br>goto end<br>:gol<br>echo Not name disk<br>:end
+~IF "%1%"\=\="W98" GOTO EW98<br>path\=C:\\BIT;C:\\BIN;C:\\;F:\\TP;<br>e:\\nc\\nc<br>GOTO QUIT<br>:EW98<br>path\=C:\\ODAPI;%PATH%<br>:QUIT
+~CHOICE /C:ANV   /N  Введіть A, N або V<br>case  3 GOTO windows<br>case 2 GOTO NC<br>win<br>:end
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Який фрагмент вірно реалізує Алгоритм синхронізації двох процесів: {
+~void test(i)    <br>\{     \{         state[i] \= EATING; <br>        up(&amp;s[i]);     \} <br>    if (state[i] \=\= HUNGRY &amp;&amp; state[LEFT] !\= EATING <br>&amp;&amp; state[RIGHT] \= EATING) <br>\}
+~procedure процес1;	begin<br>&lt; оператори1 процесу 1&gt;    P(подія)    &lt; оператори2 процесу 1&gt;<br>	end;<br>procedure процес2;begin<br>&lt; оператори1 процесу 2&gt;   V(подія)  	&lt; оператори2 процесу 2&gt;<br>end;
+~procedure процес1;	begin<br>&lt; оператори1 процесу 1&gt;    V(подія)    &lt; оператори2 процесу 1&gt;<br>	end;<br>procedure процес2;begin<br>&lt; оператори1 процесу 2&gt;   V(подія)  	&lt; оператори2 процесу 2&gt;<br>end;
+~procedure процес1;	begin<br>&lt; оператори1 процесу 1&gt;    P(подія)    &lt; оператори2 процесу 1&gt;<br>	end;<br>procedure процес2;begin<br>&lt; оператори1 процесу 2&gt;   P(подія)  	&lt; оператори2 процесу 2&gt;<br>end;
+~void test(i)    <br>\{ up(&amp;s[i]);     <br>    if (state[i] \= HUNGRY &amp;&amp; state[LEFT] \= EATING <br>&amp;&amp; state[RIGHT] !\= EATING) <br>    \{         state[i] \= EATING; <br>        \} <br>\}
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Яка послідовність дій для створення короткого імені файлу у Windows: {
+~ 1.Отримані букви перетворити в прописні. Якщо згенероване ім'я збігається з вже існуючим, то збільшити число в рядку {.<br>2.З довгого імені видалити всі символи неприпустимі в іменах FAT. Видалити крапки наприкінці і початку імені. 3.Після цього видалити всі крапки, що знаходяться усередині імені крім останньої. <br>4.Обрізати рядок, розташований перед крапкою, до 6 символів і додати в кінець {. Обрізати рядок за крапкою до 3 символів. 
+~ 1.З довгого імені видалити всі символи неприпустимі в іменах FAT. Видалити крапки наприкінці і початку імені. 2.Після цього видалити всі крапки, що знаходяться усередині імені крім останньої. <br>3.Обрізати рядок, розташований перед крапкою, до 6 символів і додати в кінець {. Обрізати рядок за крапкою до 3 символів. <br>4.Отримані букви перетворити в прописні. Якщо згенероване ім'я збігається з вже існуючим, то збільшити число в рядку {.
+~ 1. Обрізати рядок, розташований перед крапкою, до 6 символів і додати в кінець {. Обрізати рядок за крапкою до 3 символів. початку імені. <br>2.Після цього видалити всі крапки, що знаходяться усередині імені крім останньої.<br>3.Отримані букви перетворити в прописні. Якщо згенероване ім'я збігається з вже існуючим, то збільшити число в рядку {.
+~ 1.Обрізати рядок, розташований перед крапкою, до 6 символів і додати в кінець {. Обрізати рядок за крапкою до 3 символів. <br>2.Отримані букви перетворити в прописні. Якщо згенероване ім'я збігається з вже існуючим, то збільшити число в рядку {.<br>3.З довгого імені видалити всі символи неприпустимі в іменах FAT. Видалити крапки наприкінці і початку імені. 4.Після цього видалити всі крапки, що знаходяться усередині імені крім останньої. 
+~ 1.Обрізати рядок, розташований перед крапкою, до 6 символів і додати в кінець {. Обрізати рядок за крапкою до 3 символів. <br>2.Отримані букви перетворити в прописні. Якщо згенероване ім'я збігається з вже існуючим, то збільшити число в рядку {.<br>4.Після цього видалити всі крапки, що знаходяться усередині імені крім останньої. 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Яке налаштування додає в контекстне меню програми "Мой компьютер "команду "Групповая политика": {
+~[MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11] <br>@ \= " Групповая политика " [HKEY_L0CAL_MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11 \\ command] <br>@ \= hex (2): 25,00,77,00,69,00,6e, 00,64,00,69,00,72,00,25,00,5c, ... 
+~[HKEY_L0CAL_MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11] <br>@ \= " Групповая политика " [HKEY_L0CAL_MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11 \\ command] <br>@ \= hex (2): 25,00,77,00,69,00,6e, 00,64,00,69,00,72,00,25,00,5c, ...
+~[HKEY_L0CAL_MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11] <br>@ \= [HKEY_L0CAL_MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11 \\ command] <br>@ \= hex (2): 25,00,77,00,69,00,6e, 00,64,00,69,00,72,00,25,00,5c, ...
+~[HKEY_L0CAL_MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11] <br>@ \= " Групповая политика "  \\ shell \\ 11 \\ command] <br>@ \= hex (2): 25,00,77,00,69,00,6e, 00,64,00,69,00,72,00,25,00,5c, ...
+~@ \= " Групповая политика " \= \\ shell \\ 11 \\ command] <br>@ \= hex (2): 25,00,77,00,69,00,6e, 00,64,00,69,00,72,00,25,00,5c, ...
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Яке налаштування Реєстру ОС вірне для перетворення контекстного меню "Мой компьютер": {
+~[HKEY_L0CAL_MACHINE\\S0FTWARE\\Classes\\CLSID\\\{20D04FE0-3AEA-1069-A2D8-08002B30309D\}\\ shell\\1] <br>@ \= "Администрирование" <br>@ \= "control admintools"<br>@ \= " Групповая политика " [HKEY_L0CAL_MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11 \\ command] <br>@ \= hex (2): 25,00,77,00,69,00,6e, 00,64,00,69,00,72,00,25,00,5c, ... 
+~[HKEY_L0CAL_MACHINE\\S0FTWARE\\Classes\\CLSID\\\{20D04FE0-3AEA-1069-A2D8-08002B30309D\}\\ shell\\1] <br>@ \= "Администрирование" <br>[HKEY_L0CAL_MACHINE\\S0FTWARE\\Classes\\CLSID\\\{20D04FE0-3AEA-1069-A2D8-08002B30309D\}\\ shell\\1\\command] <br>@ \= "control admintools"
+~[[HKEY_L0CAL_MACHINE\\S0FTWARE\\Classes\\CLSID\\\{20D04FE0-3AEA-1069-A2D8-08002B30309D\}\\ shell\\1] <br>@ \= "Администрирование" <br>[HKEY_L0CAL_MACHINE\\S0FTWARE\\Classes\\CLSID\\\{20D04FE0-3AEA-1069-A2D8-08002B30309D\}\\ shell\\1\\command] <br>@ \= "control admintools"<br>@ \= hex (2): 25,00,77,00,69,00,6e, 00,64,00,69,00,72,00,25,00,5c, ...
+~[HKEY_L0CAL_MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11] <br>[HKEY_L0CAL_MACHINE\\S0FTWARE\\Classes\\CLSID\\\{20D04FE0-3AEA-1069-A2D8-08002B30309D\}\\ shell\\1] <br>@ \= "Администрирование" <br>@ \= "control admintools"
+~@ \= " Групповая политика " \= \\ shell \\ 11 \\ command] <br>[HKEY_L0CAL_MACHINE\\S0FTWARE\\Classes\\CLSID\\\{20D04FE0-3AEA-1069-A2D8-08002B30309D\}\\ shell\\1] <br>@ \= "Администрирование" 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Який фрагмент вірно реалізує можливість виконати за вибором одну з двох команд format, fdisk. Вибір здійснюється символами T  або K. Здійснити виведення відповідних підказок для вибору. {
+~CHOICE /C: /C:TK   /N  Введіть T, K<br>IF ERROR 3 GOTO end<br>IF ERROR 2 GOTO NC<br>format<br>goto end<br>:nc<br>fdisk <br>: windows<br>win<br>:end
+~CHOICE /C:TK   /N  Введіть T, K <br>IF ERRORLEVEL 2 GOTO NC<br>format<br>goto end<br>:nc<br>fdisk <br>:end
+~CHOICE /C:ANV   /N  Введіть A, N <br>IF ERRORLEVEL 2 GOTO NC<br>Msav<br>goto end<br>:nc<br>format<br>:end
+~VARIANT /C: /C:TK   /N  Введіть T, K<br>IF ERRORLEVEL 3 GOTO windows<br>IF ERRORLEVEL 2 GOTO NC<br>Msav<br>goto end<br>:nc<br>nc <br>goto end<br>: windows<br>win<br>:end
+~CHOICE //C:TK   /N  Введіть T, K<br>case  3 GOTO k<br>case 2 GOTO NC<br>:nc<br>nc <br>goto nc<br>: k<br>win
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Яке налаштування додає в контекстне меню програми "Мой компьютер "команду "Сетевая политика": {
+~[MACHINE / S0FTWARE /Classes /CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11] <br>@ \= " Сетевая политика " [HKEY_L0CAL_MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11 \\ command] <br>@ \= hex (2): 25,00,77,00,69,00,6e, 00,64,00,69,00,72,00,25,00,5c, ... 
+~[HKEY_L0CAL_MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11] <br>@ \= " Сетевая политика " [HKEY_L0CAL_MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11 \\ command] <br>@ \= hex (2): 25,00,77,00,69,00,6e, 00,64,00,69,00,72,00,25,00,5c, ...
+~[HKEY_L0CAL_MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11] <br>@ \= [HKEY_L0CAL_MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} \\ shell \\ 11 \\ command] <br>@ \= hex (2): 25,00,77,00,69,00,6e, 00,64,00,69,00,72,00,25,00,5c, ...
+~[HKEY_L0CAL_MACHINE \\ S0FTWARE \\ Classes \\ CLSID \\ \{20D04FE0-3AEA-1069- A2D8-08002B30309D\} / shell \\ 11] <br>@  " Сетевая политика "  / shell \\ 11 \\ command] <br>@ \= hex (2): 25,00,77,00,69,00,6e, 00,64,00,69,00,72,00,25,00,5c, ...
+~@ \= " Сетевая политика " \= \\ shell \\ 11 \\ command] <br>@  hex (2): 25,00,77,00,69,00,6e, 00,64,00,69,00,72,00,25,00,5c, ...
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити командний файл, в якому реалізувати вихід за 0 та після 10 сек очікування, в решта випадках - очікування. Вибрати вірний варіант: {
+~@ECHO OFF<br>:VR<br>VARIANT /C:1230 /T:0,10 Ваш варіант<br>IF %ERRORLEVEL% EQU 4 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO VR<br>:EXIT
+~@ECHO OFF<br>:CHOICE<br>CHOICE /C:1230 /T:0,10 Ваш варіант<br>IF %ERRORLEVEL% EQU 4 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO CHOICE<br>:EXIT
+~@ECHO OFF<br>CHOICE /C:1230 /T:0,10 Ваш варіант<br>IF %ERRORLEVEL% EQU 4 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO CHOICE<br>:EXIT
+~@ECHO OFF<br>:CHOICE<br>CHOICE /C:1230 /T:20,30 Ваш варіант<br>TIMEOUT\=10<br>IF %ERRORLEVEL% EQU 4 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO CHOICE<br>:EXIT
+~@ECHO OFF<br>CHOICE /C:1230 /T:20,30 Ваш варіант<br>TIMEOUT\=10<br>IF %ERRORLEVEL% EQU 4 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO CHOICE<br>:EXIT
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити командний файл, в якому реалізувати вихід за E та після 30 сек очікування, в решта випадках - очікування. Вибрати вірний варіант: {
+~ @ECHO OFF<br>:VR<br>VARIANT /C:AB0 /T:0,30 Ваш варіант<br>IF %ERRORLEVEL% EQU 4 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO VR<br>:EXIT
+~ @ECHO OFF<br>:CHOICE<br>CHOICE /C:CDE /T:0,30 Ваш варіант<br>IF %ERRORLEVEL% EQU 3 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO CHOICE<br>:EXIT
+~ @ECHO OFF<br>CHOICE /C:1230 /T:0,10 Ваш варіант<br>IF %ERRORLEVEL% EQU 3 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO CHOICE<br>:EXIT
+~ @ECHO OFF<br>:CHOICE<br>CHOICE /C:E230 /T:20,30 Ваш варіант<br>TIMEOUT\=30<br>IF %ERRORLEVEL% EQU 3 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO CHOICE<br>:EXIT
+~ @ECHO OFF<br>CHOICE /C:1230 /T:20,30 Ваш варіант<br>TIMEOUT\=10<br>IF %ERRORLEVEL% EQU 4 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO CHOICE<br>:EXIT
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити командний файл, в якому реалізувати вихід за X та після 10 сек очікування, в решта випадках - очікування. Вибрати вірний варіант: {
+~ @ECHO OFF<br>:VR<br>VARIANT /C:AB0 /T:0,30 Ваш варіант<br>IF %ERRORLEVEL% EQU 4 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO VR<br>:EXIT
+~ @ECHO OFF<br>:CHOICE<br>CHOICE /C:CDX /T:0,10 Ваш варіант<br>IF %ERRORLEVEL% EQU 3 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO CHOICE<br>:EXIT
+~ @ECHO OFF<br>CHOICE /C:1230 /T:0,10 Ваш варіант<br>IF %ERRORLEVEL% EQU 4 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO CHOICE<br>:EXIT
+~ @ECHO OFF<br>:CHOICE<br>CHOICE /C:E230 /T:20,10 Ваш варіант<br>TIMEOUT\=10<br>IF %ERRORLEVEL% EQU 3 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO CHOICE<br>:EXIT
+~ @ECHO OFF<br>CHOICE /C:1230 /T:20,30 Ваш варіант<br>TIMEOUT\=10<br>IF %ERRORLEVEL% EQU 3 GOTO EXIT<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO CHOICE<br>:EXIT
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити командний файл, в якому визначити назви дисків та записати їх у файл disk.txt. Вибрати вірний варіант: {
+~mkfile disk.txt<br>for %%i in (a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z) <br>DO (if exist %%i:\\ echo Disk %%i: exist &gt;&gt; disk.txt)
+~copy nul disk.txt<br>for %%i in (a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z) <br>DO (if exist %%i:\\ echo Disk %%i: exist &gt;&gt; disk.txt)
+~mkfile nul disk.txt<br>for %%i in (a:,b:,c:,d:,e:,f:,g:,h:,i:,j:,k:,l:,m:,n:,o:,p:,q:,r:,s:,t:,u:,v:,w:,x:,y:,z:) <br>do (if exist %%i:\\ echo Disk %%i: exist &gt;&gt; disk.txt)
+~@ECHO OFF<br>:CHOICE<br>copy nul disk.txt<br>for %%i in (a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z) <br>DO (if exist %%i:\\ echo Disk %%i: exist &gt;&gt; disk.txt)<br>GOTO CHOICE<br>:EXIT
+~@ECHO OFF<br>for %%i in (a:,b:,c:,d:,e:,f:,g:,h:,i:,j:,k:,l:,m:,n:,o:,p:,q:,r:,s:,t:,u:,v:,w:,x:,y:,z:) <br>do (if exist %%i:\\ echo Disk %%i: exist &gt;&gt; disk.txt)<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO ECHO<br>:EXIT
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити командний файл, в якому визначити каталогів та підкаталогів на диску C та записати їх у файл katalog.txt. Вибрати вірний варіант: {
+~mkfile katalog.txt<br>Echo *** Список папок на диску C: *** &gt;&gt; C:\\ katalog.txt<br>cd c:\\<br>ECHO з видачою значень змінної <b>%%pi </b><br>for /R %%i in (C) DO <br>(ECHO Папка "%%pi" &gt;&gt; C:\\ katalog.txt)
+~copy nul C:\\ katalog.txt<br>Echo *** Список папок на диску C: *** &gt;&gt; C:\\ katalog.txt<br>cd c:\\<br>ECHO з видачою значень змінної <b>%%pi </b><br>for /R %%i in (C) DO <br>(ECHO Папка "%%pi" &gt;&gt; C:\\ katalog.txt)
+~copy nul Е:\\ katalog.txt<br>Echo *** Список папок на диску C: *** &gt;&gt; C:\\ katalog.txt<br>cd c:\\<br>ECHO з видачою значень змінної <b>%%pi </b><br>for /R %%i in (Е) DO <br>(ECHO Папка "%%pi" &gt;&gt; C:\\ katalog.txt)
+~mkfile nul disk.txt<br>for %%i in (a:,b:,c:,d:,e:,f:,g:,h:,i:,j:,k:,l:,m:,n:,o:,p:,q:,r:,s:,t:,u:,v:,w:,x:,y:,z:) <br>do (if exist %%i:\\ echo Disk %%i: exist &gt;&gt; disk.txt)
+~@ECHO OFF<br>:CHOICE<br>copy nul disk.txt<br>for %%i in (a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z) <br>DO (if exist %%i:\\ echo Disk %%i: exist &gt;&gt; disk.txt)<br>GOTO CHOICE<br>:EXIT
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити командний файл, в якому визначити каталогів та підкаталогів на диску Е та записати їх у файл katalog.txt. Вибрати вірний варіант: {
+~mkfile katalog.txt<br>Echo *** Список папок на диску Е: *** &gt;&gt; Е:\\ katalog.txt<br>cd e:\\<br>ECHO з видачою значень змінної <b>%%pi </b><br>if /R %%i in (Е) DO <br>(ECHO Папка "%%pi" &gt; Е:\\ katalog.txt)
+~copy nul C:\\ katalog.txt<br>Echo *** Список папок на диску C: *** &gt;&gt; C:\\ katalog.txt<br>cd c:\\<br>ECHO з видачою значень змінної <b>%%pi </b><br>for /R %%i in (Е) DO <br>(ECHO Папка "%%pi" &gt;&gt; C:\\ katalog.txt)
+~copy nul Е:\\ katalog.txt<br>Echo *** Список папок на диску E: *** &gt;&gt; E:\\ katalog.txt<br>cd E:\\<br>ECHO з видачою значень змінної <b>%%pi </b><br>for /R %%i in (Е) DO <br>(ECHO Папка "%%pi" &gt; E:\\ katalog.txt) <br>GOTO for<br>:EXIT
+~mkfile nul disk.txt<br>for %%i in (a:,b:,c:,d:,e:,f:,g:,h:,i:,j:,k:,l:,m:,n:,o:,p:,q:,r:,s:,t:,u:,v:,w:,x:,y:,z:) <br>do (if exist %%i:\\ echo Disk %%i: exist &gt;&gt; disk.txt)
+~@ECHO OFF<br>:CHOICE<br>copy nul disk.txt<br>for %%i in (a,b,c,d,e,) <br>DO (if exist %%i:\\ echo Disk %%i: exist &gt;&gt; disk.txt)<br>GOTO CHOICE<br>:EXIT
+~@ECHO OFF<br>for %%i in (e:,f:,g) <br>do (if exist %%i:\\ echo Disk %%i: exist &gt;&gt; disk.txt)<br>echo Ваш вибір\=%ERRORLEVEL%<br>GOTO ECHO<br>:EXIT
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити командний файл, в якому визначити наявність каталогу TEMP на диску Е, якщо немає - створити,якщо є -  знищити в ньому всі файли з розширенням tmp. Вибрати вірний варіант: {
+~cd e:\\<br>if exist E:\\TEMP md E:\\TEMP<br>del /Q E:\\ TEMP\\*.tmp
+~cd e:\\<br>if not exist E:\\TEMP md E:\\TEMP<br>del /Q E:\\ TEMP\\*.tmp
+~mkfile nul temp.tmp<br>cd e:\\<br>if not exist E:\\TEMP md E:\\TEMP<br>del /Q E:\\ TEMP\\*.tmp
+~cd e:\\<br>if not exist E:\\TEMP*.* mkdir E:\\TEMP<br>del /Q E:\\ TEMP\\*.tmp
+~@ECHO OFF<br>for %%i in (e:,f:,g) <br>do (if exist %%i:\\ echo Disk %%i: exist &gt;&gt; disk.txt):EXIT
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити командний файл, в якому Знищити в каталозі TEMP на диску Е всі файли з розширенням tmp, скопіювати в нього всі файли з розширенням txt з каталогу doc цього диска. Вибрати вірний варіант: {
+~cd e:\\<br>if exist E:\\TEMP md E:\\TEMP<br>del /Q E:\\ TEMP\\*.tmp<br>for /R %%i in (c) DO (<br>if exist "%%\dpi*.log" copy "%%\dpi*.log" "e:\\temp\\*.tmp"
+~cd e:\\<br>del /Q E:\\ TEMP\\*.tmp<br>copy e:\\doc\\*.txt e:\\temp
+~mkfile nul temp.tmp<br>cd e:\\<br>del /Q E:\\ TEMP\\*.tmp<br>copy e:\\doc\\*.txt e:\\temp <br>if not exist E:\\TEMP md E:\\TEMP<br>del /Q E:\\ TEMP\\*.tmp
+~cd e:\\<br>del /Q E:\\ TEMP\\*.tmp<br>if not exist E:\\TEMP*.* mkdir E:\\TEMP<br>del /Q E:\\ TEMP\\*.tmp
+~@ECHO OFF<br>cd e:\\<br>del /Q E:\\ TEMP\\*.tmp<br>copy e:\\doc\\*.txt e:\\temp <br>exist &gt;&gt; disk.txt):EXIT
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити командний файл, в якому Перекодувати (програма chcp) текстовий файл Ukr.txt з кодування 866 в кодування 1251. Результат записати у файл WinU.txt. Вибрати вірний варіант: {
+~exit<br>:m1<br>chcp 1251 &gt;nul<br>echo %\1 &gt;&gt; WinU.txt<br>chcp 866 &gt;nul<br>exit /b<br>for /R %%i in (c) DO (<br>if exist "%%\dpi*.txt" copy "%%\dpi*.log" " WinU "
+~@echo off<br>chcp 866 &gt;nul<br>for /f "tokens\=*" %%i in (Ukr.txt) do call:m1 "%%i"<br>exit<br>:m1<br>chcp 1251 &gt;nul<br>echo %\1 &gt;&gt; WinU.txt<br>chcp 866 &gt;nul<br>exit /b
+~mkfile nul temp.tmp<br>chcp 1251 &gt;nul<br>echo %\1 &gt;&gt; WinU.txt<br>chcp 866 &gt;nul if not exist E:\\TEMP md E:\\TEMP<br>del /Q E:/ TEMP\\*.tmp
+~@echo off<br>chcp 866 &gt;nul<br>if /f "tokens\=*" %%i in (Ukr.txt) do goto exit<br>chcp 1251 &gt;nul<br>echo %\1 &gt;&gt; WinU.txt<br>chcp 866 &gt;nul<br>exit /b
+~@ECHO OFF<br>cd e:/<br>del /Q E:\\ TEMP\\*.tmp<br>chcp 1251 &gt;nul<br>echo %\1 &gt;&gt; WinU.txt<br>chcp 866 &gt;nul
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити командний файл, в якому Створити архіватором RAR архів файлів з каталогу d:\\stud, назва якого - поточний час, знаходиться в каталозі з поточною датою . Вибрати вірний варіант: {
+~exit<br>set VDATE\=%date:\3%<br>md d:\\%VDATE%<br>set VTIME\=%time:\0,-3%<br>set VTIME\=%VTIME::\=.%<br>rar a -r d:\\%VDATE%\\%VTIME%.rar "d:\\stud\\*.*"
+~set VDATE\=%date:\3%<br>md d:\\%VDATE%<br>set VTIME\=%time:\0,-3%<br>set VTIME\=%VTIME::\=.%<br>rar a -r d:\\%VDATE%\\%VTIME%.rar "d:\\stud\\*.*"
+~set VDATE\=%date:\3%<br>midkat d:\\%VDATE%<br>set VTIME\=%time:\0,-3%<br>set VTIME\=%VTIME::\=.%<br>rar a -r d:\\%VDATE%\\%VTIME%.rar "d:\\*.*"
+~@echo off<br>set VDATE\=%date:\3%<br>moded d:\\%VDATE%<br>set VTIME\=%time:\0,-3%<br>set VTIME\=%VTIME::\=.%<br>rar a -r d:\\%VDATE%\\%VTIME%.rar "d: stud \\time.*"
+~@ECHO OFF<br>setup VDATE\=%date:\3%<br>mdel d:\\%VDATE%<br>set VTIME\=%time:\0,-3%<br>set VTIME\=%VTIME::\=.%<br>rararx a -r d:\\%VDATE%\\%VTIME%.rar "d:\\*.*"
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити командний файл, в якому виводиться на екран значення змінної ERRORLEVEL на введений командний рядок . Вибрати вірний варіант: {
+~exit<br>@echo off<br>if "%1" NEQ "" GOTO P1<br>ECHO Потрібно ввести команду для визначення ERRORLEVEL<br>exit<br>:P1<br>%1 %2 %3 %4 %5 %6 %7 %8<br>ECHO %1 %2 %3 %4 %5 %6 %7 %8 ERRORLEVEL\=%ERRORLEVEL%
+~@echo off<br>if "%1" NEQ "" GOTO P1<br>ECHO Потрібно ввести команду для визначення ERRORLEVEL<br>exit<br>:P1<br>%1 %2 %3 %4 %5 %6 %7 %8<br>ECHO %1 %2 %3 %4 %5 %6 %7 %8 ERRORLEVEL\=%ERRORLEVEL%
+~set VDATE\=%date:3%<br>md d:\\%VDATE%<br>@echo off<br>if "%5" NEQ "" GOTO P1<br>ECHO Потрібно ввести команду для визначення ERRORLEVEL<br>exit<br>:P5<br>%1 %2 %3 %4 %5 %6 %7 %8<br>ECHO %1 %2 %3 %4 %5 %6 %7 %8 ERRORLEVEL\=%ERRORLEVEL%
+~@echo off<br>@echo off<br>if "%1" NEQ "" GOTO P1<br>ECHO Потрібно ввести команду для визначення ERRORLEVEL<br>exit<br>:P5<br>%1 %2 %3 %4 %5 %6 %7 %8<br>ECHO %1 %2 %3 %4 %5 %6 %7 %8 ERRORLEVEL\=%ERRORLEVEL%
+~@ECHO OFF<br>@echo off<br>if "%1" NEQ "" GOTO P1 <br>ECHO Потрібно ввести команду для визначення ERRORLEVEL<br>:P1<br>exit %1 %2 %3 %4 %5 %6 %7 %8<br>ECHO %1 %2 %3 %4 %5 %6 %7 %8 ERRORLEVEL\=%ERRORLEVEL%<br>rar a -r d:\\%VDATE%\\%VTIME%.rar "d:\\*.*"
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити командний файл (ОС Linux), в якому виводиться на екран вміст поточного каталогу. Вибрати вірний варіант: {
+~exit<br>lsl () \{  ls -1  \}<br>for variable in `lsl`<br>do<br>echo "$variable"<br>done
+~\#!/bin/bash<br>lsl () \{  ls -1  \}<br>for variable in `lsl`<br>do<br>echo "$variable"<br>done
+~md d:\\%VDATE%<br>\#!/bin/bash<br>lsl () \{  ls -1  \}<br>for variable in `lsl`<br>do<br>echo "$variable"<br>done ECHO %1 %2 %3 %
+~:P5<br>\#!/bin/bash<br>lsl () \{  ls -1  \}<br>do<br>echo "$variable"<br>done
+~rar a -r d:\\%VDATE%\\%VTIME%.rar "d:\\*.*"<br>\#!/bin/bash<br>lsl () \{  ls -1  \}<br>for variable in `lsl`<br>echo "$variable"<br>done
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити командний файл (ОС Linux), в якому виводиться на екран вміст поточного каталогу, імена повинні містити символи no . Вибрати вірний варіант: {
+~exit<br>lsl () \{  ls -1  \}<br>for variable in `lsl`<br>do<br>echo "$variable" | grep -v "no"<br>done
+~\#!/bin/bash<br>lsl\=`ls -1`<br>for variable in $lsl<br>Do<br>echo "$variable" | grep -v "no"<br>done...
+~md d:\\%VDATE%<br>\#!/bin/bash<br>lsl () \{  ls -1  \}<br>for variable in `lsl`<br>do<br>echo "$variable" | grep -v "no"<br>done ECHO %1 %2 %3 %
+~:P5<br>\#!/bin/bash<br>lsl () \{  ls -1  \}<br>do<br>echo "$variable"<br>done
+~rar a -r d:\\%VDATE%\\%VTIME%.rar "d:\\*.*"<br>\#!/bin/bash<br>lsl () \{  ls -1  \}<br>for variable in `lsl`<br>echo "$variable" | grep -v "no"<br>done
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити командний файл (ОС Linux), в якому виводиться на екран вміст поточного каталогу, до тих пір, поки не зустрінеться файл lskr.sh . Вибрати вірний варіант: {
+~exit<br>for variable in $lsl<br>do<br>if [ $variable !\= " lskr.sh" ]<br>then<br>echo "$variable" | grep -v " lskr "<br>else<br>break<br>fi
+~\#!/bin/bash<br>lsl\=`ls -1`<br>for variable in $lsl<br>do<br>if [ $variable !\= " lskr.sh" ]<br>then<br>echo "$variable" <br>else<br>break<br>fi<br>done
+~md d:\\%VDATE%<br>lsl\=`ls -1`<br>for variable in $lsl<br>do<br>if [ $variable !\= " lskr.sh" ]<br>then
+~:P5<br>\#!/bin/bash<br>lsl () \{  ls -1  \}<br>do<br>echo "$variable"<br>if [ $variable !\= " lskr.sh" ]<br>then<br>echo "$variable" <br>done
+~rar a -r d:\\%VDATE%\\%VTIME%.rar "d:\\*.*"<br>\#!/bin/bash<br>for variable in $lsl<br>if [ $variable !\= "lo lskr op.sh" ]<br>then<br>echo "$variable" <br>else<br>break<br>fi
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Створити скрипт (ОС Linux), резервна копія файлів, файл архіву містить в назві поточний каталог та дату . Вибрати вірний варіант: {
+~\#!/bin/bash<br>date \= set<br>OF\=my_directory_$(date +%Y%m%d). gz<br>tar -czf $OF /home/linuxconfig
+~\#!/bin/bash<br>OF\=myhome_directory_$(date +%Y%m%d).tar.gz<br>tar -czf $OF /home/linuxconfig
+~\#!/bin\\bash<br>date \= set<br>OF\=my_directory_$(date +%Y%m%d). gz<br>gzip -czf $OF /home/linuxconfig
+~\#!/bin/bash<br>OF\=myhome_directory_$(date +%Y%m%d).tar.gz<br>gzip -czf $OF /home/linuxconfig<br>done
+~rar a -r d:\\%VDATE%\\%VTIME%.rar "d:\\*.*"<br>\#!/bin/bash<br>OF\=myhome_directory_$(date +%Y%m%d).tar.gz<br>gzip -czf $OF /home/linuxconfig<br>done
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Cкрипт (ОС Linux) містить використання змінних. Вибрати вірний варіант: {
+~\#!/bin/bash<br>echo 1 $2 $3 ' -&gt; echo $1 $2 $3'<br>echo $\{args[0]\} $\{args(1)\} $\{args[2]\} ' -&gt; args\=("$@"); <br>echo $@ ' -&gt; echo $@'<br>echo Number of arguments passed: \# ' -&gt; echo Number of arguments passed: \#'
+~\#!/bin/bash<br>echo $1 $2 $3 ' -&gt; echo $1 $2 $3'<br>args\=("$@")<br>echo $\{args[0]\} $\{args[1]\} $\{args[2]\} ' -&gt; args\=("$@"); echo $\{args[0]\} $\{args[1]\} $\{args[2]\}'<br>echo $@ ' -&gt; echo $@'<br>echo Number of arguments passed: $\# ' -&gt; echo Number of arguments passed: $\#'
+~\#!/bin/bash<br>date \= set<br>echo $1 2 $3 ' -&gt; echo $1 $2 $3'<br>echo $\{args[0]\} $\{args[1]\} $\{args[2]\}'<br>echo $@ ' -&gt; echo $@'<br>gzip -czf $OF /home/linuxconfig
+~\#!/bin/bash<br>OF\=myhome_directory_$(date +%Y%m%d).tar.gz<br>gzip -czf $OF /home/linuxconfig<br>done
+~rar a -r d:\\%VDATE%\\%VTIME%.rar "d:\\*.*"<br>\#!/bin/bash<br>echo $1 $2 $3 ' -&gt; echo $1 $2 $3'<br>args\=("$@")<br>echo Number of arguments passed: $\# ' -&gt; echo Number of arguments passed: $\#'<br>done
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Cкрипт (ОС Linux) містить перевірку існування каталогу. Вибрати вірний варіант: {
+~\#!/bin\\bash<br>directory\="./BScr"<br>if [ -d $dir ]   then echo "Directory exists"<br>else echo "Directory does not exists"<br>fi
+~\#!/bin/bash<br>directory\="./BScr"<br>if [ -d $directory ]; then<br>echo "Directory exists"<br>else <br>echo "Directory does not exists"<br>fi
+~\#!/bin/bash<br>directory\="./BScr"<br>if [-d $directory]; then<br>eco "Directory exists"<br>else echo "Directory does not exists"
+~\#!/bin\\bash<br>directory\="./BScr"<br>if [-d $directory]; then<br>echo "Directory exists"<br>else echo "Directory does not exists"<br>done
+~directory\="./BScr"<br>if [-d $dir]; then<br>echo "Directory exists"<br>else echo "Directory does not exists"<br>done
+
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Cкрипт (ОС Linux) містить перевірку існування файлу. Вибрати вірний варіант: {
+~\#!/bin\\bash<br>files\="./BScr"<br>if [ -d $files ]; then<br>echo " exists"<br>else <br>echo " not exists"<br>fi
+~\#!/bin/bash<br>if test -f /etc/foo<br>then<br>cp /etc/foo .<br>echo " exists ".<br>else <br>echo " not exists."<br>exit<br>fi
+~\#!/bin/bash<br>if test -f /etc/foo<br>then<br>cp /etc\foo .<br>echo " exists ".<br>echo " not exists."<br>exit
+~if test -f /etc/foo<br>then<br>echo " exists ".<br>else <br>echo " not exists."<br>exit<br>done
+~if directory\="./BScr"<br>then<br>cp /etc/foo .<br>echo " exists ".<br>else <br>echo " not exists."<br>exit<br>fi<br>done
+}
+--------------
+--------------
