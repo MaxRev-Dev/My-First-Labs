@@ -7,6 +7,13 @@
 
 using namespace std;
 
+void next_cr(vector<char> &);
+void forClass(vector<char> &, vector<char> &);
+void nextMark(vector<char> &, long long &, const string &, vector<char> &);
+void getTitle(vector<char> &, long long &);
+void getQues(vector<char> &, long long &);
+void vtf(vector<char>&);
+
 void next_cr(vector<char> &ctrl)
 {
 	char lc = 'Z';

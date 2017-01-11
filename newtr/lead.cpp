@@ -3,15 +3,7 @@
 #include <vector>
 #include <string>
 #include <Windows.h>
-#include "extend.h"
-
-
-void next_cr(vector<char> &);
-void forClass(vector<char> &, vector<char> &);
-void nextMark(vector<char> &, long long &, const string &, vector<char> &);
-void getTitle(vector<char> &, long long &);
-void getQues(vector<char> &, long long &);
-void vtf(vector<char>& );
+#include "MyLib.h"
 
 using namespace std;
 

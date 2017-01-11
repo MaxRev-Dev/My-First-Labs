@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6F25B992-FCE3-4AD2-B538-AD5A2B0FA998}</ProjectGuid>
+    <ProjectGuid>{9ED0D5A7-1A88-4FF4-8B82-88D0D97AF9B0}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>newtr</RootNamespace>
+    <RootNamespace>MyPerf</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,12 +78,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="lead.cpp" />
-    <ClCompile Include="tp.cpp" />
+    <ClCompile Include="HR.cpp" />
+    <ClCompile Include="Perf.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyLib.h" />
-    <ClInclude Include="tp.h" />
+    <ClInclude Include="HR.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
