@@ -1,19 +1,19 @@
 #include "tp.h"
 
-void tp::nextMark(int)
-{
-
-}
-
 tp::tp()
 {
+	generateBody();
 }
-
 
 tp::~tp()
 {
 }
 
-void nextMark()
+void tp::generateBody()
 {
+
+}
+void tp::nextMark(int)
+{
+
 }
