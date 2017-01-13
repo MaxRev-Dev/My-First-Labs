@@ -1,19 +1,29 @@
-#include "tp.h"
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+#include "classes.h"
 
-tp::tp()
-{
+using namespace std;
+
+fls::fls() {
+	fileReq(flname);
 	generateBody();
 }
 
-tp::~tp()
-{
+void fls::fileReq(char *(flname)) {
+	cin.getline(flname, 256);
+}
+void fls::generateBody() {
+	writer ob;
+	string str(flname);
+	ifstream sup("\"" + str + "\""); 
+
 }
 
-void tp::generateBody()
-{
+void fls::nextMark(int) {
 
 }
-void tp::nextMark(int)
-{
 
+fls::~fls() {
 }
