@@ -78,12 +78,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="connectFiles.cpp" />
     <ClCompile Include="lead.cpp" />
     <ClCompile Include="tp.cpp" />
+    <ClCompile Include="write.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="connectFiles.h" />
     <ClInclude Include="MyLib.h" />
-    <ClInclude Include="tp.h" />
+    <ClInclude Include="classes.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res.html" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
