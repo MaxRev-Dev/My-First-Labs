@@ -7,73 +7,68 @@ int main(int argc, char* argv[])
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	
+	double start = clock();
 	string fname = "";
+
+	//< ----INI check---- >
 	//ini-keys
 	string str1 = "InputFile";
-	string str3 = "OutputFile";
 	string str2 = "TemplateFile";
-
+	string str3 = "OutputFile";
+	string str4 = "Marker";
+	//ini-keys
 	connectFiles base;
+	base.init();
 	base.IO(fname, str1);
-	ifstream f(fname); //"./exp/samp1.txt"
+	ifstream inpf(fname);
+
 	base.IO(fname, str2);
-	ifstream sup(fname); //"res.html"
+	ifstream sup(fname); 
+
 	base.IO(fname, str3);
-	ofstream hit(fname, ios_base::trunc); //"index.html"
-
-	vector<char>vec_main;
-	vector<char>vec_sup;
-	vector<char>ctr;
-	ctr.push_back(64);
-	vector<char>mirror = ctr;
-	string itr;
-
-	int c = 1, i = 1;
-	long long icur,tsx,res2;
-	string marker = "/*mark*/";
+	ofstream opf(fname, ios_base::trunc); 
 	
-	//init header
-	icur = sup.tellg();
-	nextMark(vec_main, icur, marker,ctr);
-	vtf(vec_main);
-
+	//< ----endof INI check---- >
+	textGen doc;
+	doc.nextMark(sup);
+	doc.vecTF(opf);
+	long long res, icur;
 	//main-panels
-	while (f) 
-	{	
-		long long res = icur;
+	while (inpf)
+	{
+		icur = sup.tellg();
+		doc.getCartPos(icur, 1); 
 		//title-init
-		nextMark(vec_main, icur, marker, ctr);
-		vtf(vec_main);
+		doc.nextMark(sup);
 		//title
-		
-		tsx = f.tellg();
-		getTitle(vec_main, tsx);
-		vtf(vec_main);
-		nextMark(vec_main, icur, marker, mirror);
-		vtf(vec_main);
-	
-		for (int i = 0; i < 5; i++){
+
+		doc.getTitle(inpf);
+		doc.nextMark(sup);
+		doc.vecTF(opf);
+
+#pragma loop(hint_parallel(4))
+		for (int i = 0; i < 5; i++) {
 			//ques-init
-			nextMark(vec_main, icur, marker, ctr);
-			vtf(vec_main);
+			doc.nextMark(sup);
 			//ques
-			getQues(vec_main, tsx);
-			vtf(vec_main);
-			
+			doc.getQues(inpf);
+			doc.vecTF(opf);
 		}
-		nextMark(vec_main, icur, marker, ctr);
-		vtf(vec_main);
+		doc.nextMark(sup);
+		doc.vecTF(opf);
 
-		res2 = icur;
-		icur = res;
-		f.seekg(tsx);
+		res = icur;
+		sup.seekg(icur);
 	}
+	sup.seekg(res);
+	doc.nextMark(sup);
+	doc.vecTF(opf);
 
-	nextMark(vec_main, res2, marker, ctr);
-	vtf(vec_main);
-
-	f.close();
-	hit.close();
-		return 0;
+	inpf.close();
+	opf.close();
+	
+	double end = clock() - start;
+	printf("Время выполнения программы с использованием распараллеливания: %f\n", end / (double)CLOCKS_PER_SEC);
+	system("pause");
+	return 0;
 }
