@@ -18,14 +18,11 @@
     <ClCompile Include="lead.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="tp.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
-    <ClCompile Include="write.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
     <ClCompile Include="connectFiles.cpp">
       <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="writer.h">
+      <Filter>Заголовочные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -33,9 +30,6 @@
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
     <ClInclude Include="MyLib.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="connectFiles.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>

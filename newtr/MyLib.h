@@ -1,45 +1,26 @@
 #pragma once
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <string>
-#include <Windows.h>
+#include "classes.h"
 
-using namespace std;
-
-void next_cr(vector<char> &);
-void forClass(vector<char> &, vector<char> &);
-void nextMark(vector<char> &, long long &, const string &, vector<char> &);
-void getTitle(vector<char> &, long long &);
-void getQues(vector<char> &, long long &);
-void vtf(vector<char>&);
-
-void next_cr(vector<char> &ctrl)
+textGen::textGen()
 {
-	char lc = 'Z';
-	char &a = ctrl.at(ctrl.size() - 1);
-	if (a == lc)
-	{
-		ctrl.push_back('A');
-	}
-	else
-	{
-		a++;
-	}
+	ctr.push_back(64);
+	mirror = ctr;
+	CSimpleIniA ini;
+	connectFiles d;
+	strcpy_s(d.c_defconf, d.defconf.c_str());
+	ini.LoadFile(d.c_defconf);
+	mark = ini.GetValue("Main", "Marker", NULL);
+
 }
-void vtf(vector<char> &vcr)
-{
-	ofstream fl("index.html", ios_base::app);
-	int s = vcr.size();
-	for (int i = 0; i < s; ++i)
+void textGen::nextChr(vector<char> &ctrl)
 	{
-		fl << vcr[i];
-	} vcr.clear();
-	fl.close();
-}
-void nextMark(vector<char> &vcr, long long &x, const string &mark, vector<char> &ctrl)
-{
-	ifstream tmp("res.html");
+		char endOfR = 'Z';
+		char &lastChr = ctrl.at(ctrl.size() - 1);
+		(lastChr == endOfR) ? ctrl.push_back('A') : lastChr++;
+		clicker = true;
+	}
+void textGen::nextMark(ifstream &tmp)
+	{	
 	string itr;
 	char cr;
 	tmp.seekg(x);
@@ -64,54 +45,50 @@ void nextMark(vector<char> &vcr, long long &x, const string &mark, vector<char> 
 		tmp.get(cr);
 		if (cr == 'X')
 		{
-			next_cr(ctrl);
-			int s = ctrl.size();
+			(clicker == false) ? nextChr(ctr) : clicker = false;
+			int s = ctr.size();
 			for (int i = 0; i < s; ++i)
-				vcr.push_back(ctrl[i]);
+				vcr.push_back(ctr[i]);
 			tmp.get(cr);
 		}
 		vcr.push_back(cr);
 	}
 	tmp.seekg(x + 1);
 	x = tmp.tellg();
-	tmp.close();
-}
-void forClass(vector<char> &vcr, vector<char> &counter)
-{
-	//init class counter
-	next_cr(counter);
-	//put class counter to vec
-	int s = counter.size();
-	for (int i = 0; i < s; ++i) vcr.push_back(counter.at(i));
-}
-void getTitle(vector<char> &vcr, long long &tx)
-{
-	ifstream arch("./exp/samp1.txt");
-	arch.seekg(tx);
-	char sym = 0, pr = 0, symb = 0;
+	}
 
-	while (sym != '{')
+void textGen::vecTF(ofstream &fl)
 	{
-		vcr.push_back(sym);
-		if (sym == '/')
+		int s = vcr.size();
+		for (int i = 0; i < s; ++i)
 		{
-			arch.get(sym);
+			fl << vcr[i];
+		} vcr.clear();
+	}
+
+void textGen::getTitle(ifstream &arch)
+	{
+		char sym = 0, pr = 0, symb = 0;
+
+		while (sym != '{')
+		{
+			vcr.push_back(sym);
 			if (sym == '/')
 			{
-				vcr.pop_back();
-				vcr.pop_back();
-			} else vcr.push_back(sym);
+				arch.get(sym);
+				if (sym == '/')
+				{
+					vcr.pop_back();
+					vcr.pop_back();
+				}
+				else vcr.push_back(sym);
+			}
+			arch.get(sym);
 		}
-		arch.get(sym);
-	} arch.get(sym);
-	tx = arch.tellg();
-	arch.close();
-}
-void getQues(vector<char> &vcr, long long &tx) {
-	ifstream arch("./exp/samp1.txt");
+	}
+void textGen::getQues(ifstream &arch) {
 	string sg = "<strong>";
 	string sgx = "</strong>";
-	arch.seekg(tx);
 	char sym = 0, pr = 0;
 	int j = 1;
 	while (true)
@@ -157,21 +134,25 @@ void getQues(vector<char> &vcr, long long &tx) {
 
 		arch.seekg(tx);
 		int j = 0;
-		while (j<5){
+		while (j < 5) {
 			arch.get(sym);
-			if (!arch){
+			if (!arch) {
 				arch.close();
 				break;
 			} j++;
 		}
-		if (arch){
+		if (arch) {
 			tx = arch.tellg();
 			tx -= j;
 			arch.seekg(tx);
 		}
 	}
 	tx = arch.tellg();
-	tx -= 1;
-
-	arch.close();
+	arch.seekg(tx-1);
+}
+void textGen::getCartPos(long long&rr, int sw) {
+	switch (sw) {
+	case 1: x = rr;
+	case 2: tx = rr;
+	}
 }
