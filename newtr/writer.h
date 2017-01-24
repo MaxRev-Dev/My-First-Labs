@@ -1,20 +1,19 @@
 #pragma once
-#include "classes.h"
-template <class type>
+template <typename type>
 class writer
 {
+private:
 public:
 	writer();
 	void w(const type&);
 };
-
-template <class type>
+template <typename type>
 writer<type>::writer() {
+	std::cout ;
+}
 
-};
 
-template <class type>
-void writer<type>::w(const type&str) {
-	std::cout << str << endl;
-};
-
+template <typename type>
+void writer<type>::w(const type& str) {
+	std::cout<<  str << endl;
+}

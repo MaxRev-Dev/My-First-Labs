@@ -1,14 +1,14 @@
 #pragma once
-#include "classes.h"
 
-textGen::textGen()
+textGen::textGen(string &dfdir)
 {
 	ctr.push_back(64);
 	mirror = ctr;
 	CSimpleIniA ini;
-	connectFiles d;
-	strcpy_s(d.c_defconf, d.defconf.c_str());
-	ini.LoadFile(d.c_defconf);
+	connectFiles d(dfdir);
+	memcpy(d.c_defconf, d.defconf.c_str(), sizeof(d.defconf));
+	memcpy(d.c_full, d.c_defconf, sizeof(d.defconf));
+	ini.LoadFile(d.c_full);
 	mark = ini.GetValue("Main", "Marker", NULL);
 
 }
@@ -56,7 +56,20 @@ void textGen::nextMark(ifstream &tmp)
 	tmp.seekg(x + 1);
 	x = tmp.tellg();
 	}
+void textGen::inTime(ofstream &fo) {
+	fo << "			<div class=\"footer center panel panel-success\">\n";
+	fo << "				<div class=\"panel-body\">";
+	struct tm newtime;
+	time_t now = time(0);
+	char buf[80];
+	localtime_s(&newtime, &now);
+	strftime(buf, 80, "%A - %d/%m/%y - %X", &newtime);
+	fo << "					<p>Generated on " << buf << "</p>\n";
 
+	fo << "					<a href=\"http://maxrev.pp.ua\">Powered by MaxRev <span>©</span> 2017</a>\n";
+	fo << "				</div>";
+	fo << "			</div>";
+}
 void textGen::vecTF(ofstream &fl)
 	{
 		int s = vcr.size();

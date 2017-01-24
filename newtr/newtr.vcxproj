@@ -14,13 +14,14 @@
     <ProjectGuid>{6F25B992-FCE3-4AD2-B538-AD5A2B0FA998}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>newtr</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -84,11 +85,9 @@
     <ClCompile Include="writer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="myDll\Header.h" />
     <ClInclude Include="MyLib.h" />
     <ClInclude Include="classes.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="res.html" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
