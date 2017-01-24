@@ -32,10 +32,8 @@
     <ClInclude Include="MyLib.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="res.html">
-      <Filter>Файлы ресурсов</Filter>
-    </None>
+    <ClInclude Include="myDll\Header.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
