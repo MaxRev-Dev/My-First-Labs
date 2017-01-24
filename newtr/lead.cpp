@@ -50,15 +50,15 @@ int main(int argc, char* argv[])
 			std::cout << "Помилка #" << exc;
 			switch (exc) {
 			case 1: {
-				ex.w("! Неможливо відкрити файл з тестами");
-				ex.w("Перевірте файл конфігурації");
-				system("pause");
+				ex.answers(ex1);
+				ex.answers(emergency);
+				_getch();
 				return 0; 
 			}
 			case 2: {
-				ex.w("! Неможливо відкрити файл-заготовку");
-				ex.w("Перевірте файл конфігурації");
-				system("pause");
+				ex.answers(ex2);
+				ex.answers(emergency);
+				_getch();
 				return 0;
 			}
 			}

@@ -5,6 +5,7 @@ CSimpleIniA ini;
 connectFiles::connectFiles(string &dfdir)
 {
 	defdir = dfdir;
+
 }
 int connectFiles::IO(string&str, string key) {
 	memcpy(c_defconf, defconf.c_str(), sizeof(defconf));
@@ -23,21 +24,20 @@ int connectFiles::IO(string&str, string key) {
 	return 0;
 }
 int connectFiles::init(string &d) {
-	this->helper();
+	w.answers(helper);
 	dir = opendir("./");
 	while ((ent = readdir(dir)) != NULL) {
 		str = ent->d_name;
 		if (str == defconf) {
 			w.w("	|	   Config.ini знайдено!			|");
 			string tmp;
-			IO(tmp, "InputFile");
-			cout<<"	|		  Файл "<<tmp<<"		|"<<endl;
+			if (IO(tmp, "InputFile") == -3) return -3;
+			cout<<"	|		 Файл "<<tmp<<"			|"<<endl;
 			w.w("	|	   Якщо ні то введіть іншу назву	|");
 			cout << "		";
 			cin.getline(buffer, 256);
-			memcpy(c_defdir, defdir.c_str(), sizeof(defdir));
-			memcpy(c_defconf, defconf.c_str(), sizeof(defconf));
-			IO(tmp, "ThisDir");
+			mkstr(-1);
+			if (IO(tmp, "ThisDir") == -3) return -3;
 			memcpy(c_defdir, tmp.c_str(), sizeof(defdir));
 			memcpy(c_full1,c_defdir, sizeof(defdir));
 			if (buffer[0] == 0) {
@@ -57,7 +57,8 @@ int connectFiles::init(string &d) {
 
 	if (str != defconf) {
 		if (defaultConf(d) == -3) {
-			_getch(); return -3;
+			_getch(); 
+			return -3;
 		}
 	}
 	closedir(dir);
@@ -79,17 +80,13 @@ int connectFiles::init(string &d) {
 			if (buff[0]==0) this->CreateDir(this->c_defdir);*/
 		}
 	d = defdir;
-	memcpy(c_defdir, defdir.c_str(), sizeof(defdir));
-	memcpy(c_defconf, defconf.c_str(), sizeof(defconf));
-	memcpy(c_full, c_defconf, sizeof(defconf));
+	mkstr(-1);
+	mkstr(0);
 	if (strspn(buffer,c_full1) == 0) {
-		memcpy(c_full1, c_defdir, sizeof(defdir));
-		cpst(c_full1, chr1);
+		mkstr(1);
 	}
-	memcpy(c_full2, c_defdir, sizeof(defdir));
-	cpst(c_full2, chr2);
-	memcpy(c_full3, c_defdir, sizeof(defdir));
-	cpst(c_full3, chr3);
+	mkstr(2);
+	mkstr(3);
 	return 0;
 }
 int connectFiles::hell() {
@@ -167,20 +164,14 @@ int connectFiles::hell() {
 
 }
 int connectFiles::defaultConf(string &d) {
-	w.w("	|						|");
-	w.w("	|	Нажаль конфіг не знайдено(		|");
-	w.w("	|	Це не проблема, зараз буде новий)	|");
-	w.w("	|						|");
-	w.w("		--->Making default config...");
-	
-	w.w("		Папка з завданням (press \"Enter\" for default): ");
-	w.w("");
-	std::cout << "			";
+	w.answers(helper);
+	w.answers(confInit);
 	cin.getline(buffer, 256);
 	if (buffer[0] == 0) {
+		d = defdir;
+		memcpy(c_defdir, defdir.c_str(), sizeof(defdir));
 		ini.SetValue("Main", "InputFile", c_full1 );
-		memcpy(c_full1, c_defdir, sizeof(defdir));
-		cpst(c_full1, chr1);
+		mkstr(1);
 		cpst(c_full1, ".txt");
 	}
 	else {
@@ -189,24 +180,17 @@ int connectFiles::defaultConf(string &d) {
 		defdir += "\\";
 		d = defdir;
 	}
-	memcpy(c_defdir, defdir.c_str(), sizeof(defdir));
-	memcpy(c_defconf, defconf.c_str(), sizeof(defconf));
+	mkstr(-1);
 	ini.SetValue("Main", "ThisDir", c_defdir);
-	memcpy(c_full, c_defconf, sizeof(defconf));
-	memcpy(c_full2, c_defdir, sizeof(defdir));
-	cpst(c_full2, chr2);
-	memcpy(c_full3, c_defdir, sizeof(defdir));
-	cpst(c_full3, chr3);
+	mkstr(0);
+	mkstr(2);
+	mkstr(3);
 	if (CreateDir(this->c_defdir) == false) { 
-		w.w("Нажаль папка не може бути створена. "); 
-		w.w("Можливо вона вже існує"); 
+		w.answers(confErrFileExists);
+		w.answers(emergency);
 		return -3;
 	}
-	w.w("");
-	w.w("		Вводимо просто назву. Без розширення");
-	w.w("		Назва згенерованого файлу (press \"Enter\" for default): ");
-	w.w("");
-	std::cout << "			";
+	w.answers(genFile);
 	cin.getline(buffer, 256);
 	if (buffer[0] == 0) {
 		ini.SetValue("Main", "OutputFile", c_full2);
@@ -217,10 +201,8 @@ int connectFiles::defaultConf(string &d) {
 		cpst(c_full2, ".html");
 		ini.SetValue("Main", "OutputFile", c_full2);
 	}
-	w.w("");
-	w.w("		Назва файлу-заготовки (press \"Enter\" for default): ");
-	w.w("");
-	std::cout << "			";
+	w.answers(tmplFile);
+	
 	cin.getline(buffer, 256);
 	if (buffer[0] == 0) {
 		ini.SetValue("Main", "TemplateFile", c_full3);
@@ -234,13 +216,10 @@ int connectFiles::defaultConf(string &d) {
 
 	ini.SetValue("Main", "Marker", chr4);
 		
-	w.w("		Закиньте потрібний файл в СТВОРЕНУ папку і введіть його назву тут");
-	w.w("			Це має бути TXT файл");
-	w.w("");
-	std::cout << "			";
+	w.answers(plsPutFile);
 	while (true) {
 		if (buffer[0] == '0') {
-			w.w("--->Виходимо?");
+			w.answers(exitPR);
 			return -3;
 		}		
 		cin.getline(buffer, 256);
@@ -249,9 +228,7 @@ int connectFiles::defaultConf(string &d) {
 		cpst(c_full1, ".txt");
 		ifstream f(c_full1);
 		if (!f.is_open()) {
-			w.w("		Файл не знайдено! Введіть шлях ще раз або 0 для виходу");
-			w.w("");
-			std::cout << "			";
+			w.answers(NF);
 		}
 		else {
 			ini.SetValue("Main", "InputFile", c_full1);
@@ -259,22 +236,10 @@ int connectFiles::defaultConf(string &d) {
 		}
 	}
 	w.w("");
-	if (ini.SaveFile(c_full) == 0)	w.w("		--->Конфіг успішно створено!");
-	if (this->hell() == 0) w.w("		--->Файл-шаблон успішно створено!");
-	w.w("		--->Допоміжні файли створено!");
-	w.w("		Пекло закінчилось...");
-	w.w("		Секунду..А може і дві)...");
-	w.w("");
+	if (ini.SaveFile(c_full) == 0)	w.answers(confCreated);
+	if (this->hell() == 0) w.answers(tmplCreated); 
+	w.answers(allIsOk);
 	return 0;
-}
-void connectFiles::helper() {
-	w.w("	|		---MaxRev---			|");
-	w.w("	|						|");
-	w.w("	|		 ---Info---			|");
-	w.w("	|	Якщо щось не так, видаляємо конфіг	|");
-	w.w("	|	   Назви записуються тільки		|");
-	w.w("	|		  латинськими літерами		|");
-	w.w("	|						|");
 }
 void connectFiles::cpst(char *dest, char *src) {
 	*fullsz = strlen(dest) + 2 + strlen(src);
@@ -303,4 +268,30 @@ bool connectFiles::CreateDir(TCHAR * sPathTo)
 }
 string connectFiles::der() {
 	return defconf;
+}
+void connectFiles::mkstr(int e) {
+	switch (e) {
+	case -1: {
+		memcpy(c_defdir, defdir.c_str(), sizeof(defdir));
+		memcpy(c_defconf, defconf.c_str(), sizeof(defconf));
+	}
+	case 0: {
+		memcpy(c_full, c_defconf, sizeof(defconf));
+	}
+	case 1: {
+		memcpy(c_full1, c_defdir, sizeof(defdir));
+		cpst(c_full1, chr1);
+	}
+	case 2: {
+		memcpy(c_full2, c_defdir, sizeof(defdir));
+		cpst(c_full2, chr2);
+	}
+	case 3: {
+		memcpy(c_full3, c_defdir, sizeof(defdir));
+		cpst(c_full3, chr3);
+	}
+	default: {
+
+	}
+	}
 }

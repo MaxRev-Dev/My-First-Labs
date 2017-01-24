@@ -5,15 +5,14 @@
 #include <vector>
 #include <Windows.h>
 #include <string>
-#include <SimpleIni.h>
-#include <dirent.h>
+#include "SimpleIni.h"
+#include "dirent.h"
 #include <time.h>
 #include <exception>
 #include <conio.h>
 #include <time.h>
 #include "writer.h"
 using namespace std;
-
 class connectFiles
 {
 private:
@@ -27,6 +26,8 @@ private:
 	char chr2[15] = "index.html";
 	char chr3[15] = "res.html";
 	char chr4[15] = "/*mark*/";
+	void mkstr(int);
+	
 public:
 	connectFiles(string &);
 	int IO(string&, string), e;
@@ -35,7 +36,7 @@ public:
 	bool CreateDir(TCHAR *);
 	string der();
 	void cpst(char *, char *);
-	void helper();
+	
 	int defaultConf(string &);
 	const string defconf = "config.ini";
 	char *c_full = new char[100];
@@ -48,7 +49,6 @@ public:
 
 class textGen {
 private:
-	
 	vector<char>vec_sup;
 	vector<char>ctr;
 	vector<char>mirror;
