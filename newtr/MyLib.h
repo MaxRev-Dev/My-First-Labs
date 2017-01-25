@@ -27,8 +27,8 @@ void textGen::nextMark(ifstream &tmp)
 	while (true)
 	{
 		int j = 0;
-		int t = mark.size();
-		for (int i = 0; i < t; ++i)
+		size_t t = mark.size();
+		for (size_t i = 0; i < t; ++i)
 		{
 			tmp.get(cr);
 			itr.push_back(cr);
@@ -46,8 +46,8 @@ void textGen::nextMark(ifstream &tmp)
 		if (cr == 'X')
 		{
 			(clicker == false) ? nextChr(ctr) : clicker = false;
-			int s = ctr.size();
-			for (int i = 0; i < s; ++i)
+			size_t s = ctr.size();
+			for (size_t i = 0; i < s; ++i)
 				vcr.push_back(ctr[i]);
 			tmp.get(cr);
 		}
@@ -72,8 +72,8 @@ void textGen::inTime(ofstream &fo) {
 }
 void textGen::vecTF(ofstream &fl)
 	{
-		int s = vcr.size();
-		for (int i = 0; i < s; ++i)
+		size_t s = vcr.size();
+		for (size_t i = 0; i < s; ++i)
 		{
 			fl << vcr[i];
 		} vcr.clear();
@@ -112,8 +112,8 @@ void textGen::getQues(ifstream &arch) {
 	if (sym == '%' || sym == '~')
 	{
 		if (sym == '%') {
-			int s = sg.size();
-			for (int i = 0; i < s; ++i) vcr.push_back(sg.at(i));
+			size_t s = sg.size();
+			for (size_t i = 0; i < s; ++i) vcr.push_back(sg.at(i));
 			j = 0;
 		}
 		while (true)
@@ -132,8 +132,8 @@ void textGen::getQues(ifstream &arch) {
 			vcr.push_back(sym);
 		}
 		if (j == 0) {
-			int s = sgx.size();
-			for (int i = 0; i < s; ++i) vcr.push_back(sgx.at(i));
+			size_t s = sgx.size();
+			for (size_t i = 0; i < s; ++i) vcr.push_back(sgx.at(i));
 			j = 1;
 		}
 	}
