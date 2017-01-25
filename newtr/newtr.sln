@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "newtr", "newtr.vcxproj", "{6F25B992-FCE3-4AD2-B538-AD5A2B0FA998}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "newtrForXP", "..\newtrForXP\newtrForXP.vcxproj", "{B52C7491-161D-4AE4-9FD8-F5DBF0E384B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -19,6 +21,14 @@ Global
 		{6F25B992-FCE3-4AD2-B538-AD5A2B0FA998}.Release|x64.ActiveCfg = Release|Win32
 		{6F25B992-FCE3-4AD2-B538-AD5A2B0FA998}.Release|x86.ActiveCfg = Release|Win32
 		{6F25B992-FCE3-4AD2-B538-AD5A2B0FA998}.Release|x86.Build.0 = Release|Win32
+		{B52C7491-161D-4AE4-9FD8-F5DBF0E384B2}.Debug|x64.ActiveCfg = Debug|x64
+		{B52C7491-161D-4AE4-9FD8-F5DBF0E384B2}.Debug|x64.Build.0 = Debug|x64
+		{B52C7491-161D-4AE4-9FD8-F5DBF0E384B2}.Debug|x86.ActiveCfg = Debug|Win32
+		{B52C7491-161D-4AE4-9FD8-F5DBF0E384B2}.Debug|x86.Build.0 = Debug|Win32
+		{B52C7491-161D-4AE4-9FD8-F5DBF0E384B2}.Release|x64.ActiveCfg = Release|x64
+		{B52C7491-161D-4AE4-9FD8-F5DBF0E384B2}.Release|x64.Build.0 = Release|x64
+		{B52C7491-161D-4AE4-9FD8-F5DBF0E384B2}.Release|x86.ActiveCfg = Release|Win32
+		{B52C7491-161D-4AE4-9FD8-F5DBF0E384B2}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

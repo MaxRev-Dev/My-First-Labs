@@ -16,15 +16,26 @@ enum ENU : int {
 template <typename type>
 class writer
 {
+private:
+	size_t *fullsz = new size_t;
 public:
 	writer();
-	void answers(int);
+	void answers(int); 
+	void cpstr(type *, const type *);
 	void w(const type &);
 };
 
 template<typename type>
 inline writer<type>::writer()
 {
+}
+
+template <typename type>
+void writer<type>::cpstr(type *dest, const type *src) {
+	*fullsz = strlen(dest) + 2 + strlen(src);
+	for (size_t i = strlen(dest), z = 0; i < *fullsz; i++) {
+		dest[i] = src[z++];
+	}
 }
 
 template <typename type>
@@ -37,34 +48,39 @@ void writer<type>::answers(int e) {
 		w("	|	Це не проблема, зараз буде новий)	|");
 		w("	|						|");
 		w("		--->Making default config...");
-		w("		Папка з завданням (press \"Enter\" for default): ");
+		w("");
+		w("			Папка з завданням : ");
+		w("		(press \"Enter\" for default)");
 		w("");
 		std::cout << "			";
 		break;
 	}
 	case confErrFileExists: {
 		w("		Нажаль папка не може бути створена. ");
-		w("		Можливо вона вже існує.");
-		w("		І немає конфігурації.");
+		w("			Можливо вона вже існує.");
+		w("			І немає конфігурації.");
 		break;
 	}
 	case genFile: {
 		w("");
 		w("		Вводимо просто назву. Без розширення");
-		w("		Назва згенерованого файлу (press \"Enter\" for default): ");
+		w("");
+		w("			Назва згенерованого файлу: ");
+		w("		(press \"Enter\" for default)");
 		w("");
 		std::cout << "			";
 		break;
 	}
 	case tmplFile: {
 		w("");
-		w("		Назва файлу-заготовки (press \"Enter\" for default): ");
+		w("			Назва файлу-заготовки: ");
+		w("		(press \"Enter\" for default)");
 		w("");
 		std::cout << "			";
 		break;
 	}
 	case plsPutFile: {
-		w("		Закиньте потрібний файл в СТВОРЕНУ папку і введіть його назву тут");
+		w("		а тепер просто закиньте потрібний файл в СТВОРЕНУ папку");
 		w("			Це має бути TXT файл");
 		w("");
 		std::cout << "			";
@@ -79,7 +95,7 @@ void writer<type>::answers(int e) {
 	case allIsOk: {
 		w("		--->Допоміжні файли створено!");
 		w("		Пекло закінчилось...");
-		w("		Секунду..А може і дві)...");
+		w("		Секунду..Ну тепер усе залежить від можливостей цього заліза) ");
 		w("");
 		break;
 	} 

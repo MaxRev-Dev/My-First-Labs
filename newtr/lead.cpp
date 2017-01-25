@@ -1,3 +1,4 @@
+
 #include "classes.h"
 #include "MyLib.h"
 string defdir = ".\\res\\";
@@ -20,10 +21,12 @@ int main(int argc, char* argv[])
 	if (base.init(::defdir) == -3) { 
 		return -1; 
 	}
-	if (base.c_full1 == base.c_defdir) {
+	string g(base.c_defdir);
+	string h(base.c_full1);
+	if (g == h) {
 		rc = base.IO(fname, str1);
 	}
-	else fname = base.c_full1;
+	else { fname = base.c_full1; }
 	if (rc == -3) {
 		_getch();
 		return -2;
@@ -113,6 +116,6 @@ int main(int argc, char* argv[])
 		cout << "	|		---MaxRev---			|"<<endl;
 		cout << "	|_______________________________________________|";
 		_getch();
-	
+
 	return 0;
 }

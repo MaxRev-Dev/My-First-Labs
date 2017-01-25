@@ -1,9 +1,9 @@
 #pragma once
-
+#include <Windows.h>
+#include <atlstr.h>
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <Windows.h>
 #include <string>
 #include "SimpleIni.h"
 #include "dirent.h"
@@ -16,16 +16,17 @@ using namespace std;
 class connectFiles
 {
 private:
-	char buffer[256] = "";
+	char buffer[256];
+	char chr1[15];
+	char chr2[15];
+	char chr3[15];
+	char chr4[15];
 	string str = "",tmp = "";
 	DIR *dir;
 	struct dirent *ent;
-	unsigned int *fullsz = new unsigned int;
+	size_t *fullsz = new size_t;
 	string defdir = "";
-	char chr1[15] = "tests.txt";
-	char chr2[15] = "index.html";
-	char chr3[15] = "res.html";
-	char chr4[15] = "/*mark*/";
+	
 	void mkstr(int);
 	
 public:

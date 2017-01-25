@@ -5,7 +5,11 @@ CSimpleIniA ini;
 connectFiles::connectFiles(string &dfdir)
 {
 	defdir = dfdir;
-
+	strcpy_s(buffer, "");
+	strcpy_s(chr1 , "tests.txt");
+	strcpy_s(chr2  ,"index.html");
+	strcpy_s(chr3 , "res.html");
+	strcpy_s(chr4 ,"/*mark*/");
 }
 int connectFiles::IO(string&str, string key) {
 	memcpy(c_defconf, defconf.c_str(), sizeof(defconf));
@@ -26,13 +30,14 @@ int connectFiles::IO(string&str, string key) {
 int connectFiles::init(string &d) {
 	w.answers(helper);
 	dir = opendir("./");
+	int defaultMakeCheck = 1;
 	while ((ent = readdir(dir)) != NULL) {
 		str = ent->d_name;
 		if (str == defconf) {
 			w.w("	|	   Config.ini знайдено!			|");
 			string tmp;
 			if (IO(tmp, "InputFile") == -3) return -3;
-			cout<<"	|		 ‘айл "<<tmp<<"			|"<<endl;
+			cout<<"	|		 ‘айл "<<tmp<<"		|"<<endl;
 			w.w("	|	   якщо н≥ то введ≥ть ≥ншу назву	|");
 			cout << "		";
 			cin.getline(buffer, 256);
@@ -54,37 +59,27 @@ int connectFiles::init(string &d) {
 			return 0;
 		}
 	}
-
+	closedir(dir);
 	if (str != defconf) {
 		if (defaultConf(d) == -3) {
 			_getch(); 
+			defaultMakeCheck = 0;
 			return -3;
 		}
 	}
-	closedir(dir);
+	
 	if (!opendir(defdir.c_str())) {
 			w.w("’м.. ўось п≥шло не так( ўось з назвою папки");
-			/*char buff[30];
-			cin.getline(buff, 30);
-			if (buff[0] != 0)
-			{
-				if (!this->CreateDir(buff)) {
-					w.w("Ќажаль неможливо створити файли конф≥гурац≥њ(");
-					_getch();
-					return -3;
-				}
-				defdir = buff;
-				defdir = ".\\" + defdir +"\\";
-			}
-			memcpy(c_defdir, defdir.c_str(), sizeof(defdir));
-			if (buff[0]==0) this->CreateDir(this->c_defdir);*/
+			return -3;
 		}
+
 	d = defdir;
-	mkstr(-1);
-	mkstr(0);
-	if (strspn(buffer,c_full1) == 0) {
+
+	if (defaultMakeCheck == 0) {
+		mkstr(-1);
 		mkstr(1);
 	}
+	mkstr(0);
 	mkstr(2);
 	mkstr(3);
 	return 0;
@@ -164,7 +159,6 @@ int connectFiles::hell() {
 
 }
 int connectFiles::defaultConf(string &d) {
-	w.answers(helper);
 	w.answers(confInit);
 	cin.getline(buffer, 256);
 	if (buffer[0] == 0) {
@@ -185,7 +179,8 @@ int connectFiles::defaultConf(string &d) {
 	mkstr(0);
 	mkstr(2);
 	mkstr(3);
-	if (CreateDir(this->c_defdir) == false) { 
+
+	if (CreateDir((TCHAR*)defdir.c_str()) == false) {
 		w.answers(confErrFileExists);
 		w.answers(emergency);
 		return -3;
@@ -217,7 +212,29 @@ int connectFiles::defaultConf(string &d) {
 	ini.SetValue("Main", "Marker", chr4);
 		
 	w.answers(plsPutFile);
-	while (true) {
+
+	dir = opendir(c_defdir);
+	int quiter = 0;
+	
+	while (quiter != 1) {
+		Sleep(1000);
+		dir = opendir(c_defdir);
+		while ((ent = readdir(dir)) != NULL) {
+			str = ent->d_name;
+			if (strspn(".txt", str.c_str()) == 4) {
+				memcpy(c_full1, c_defdir, sizeof(defdir));
+				writer <char> d;
+				d.cpstr(c_full1, str.c_str());
+				ini.SetValue("Main", "InputFile", c_full1);
+				quiter++;
+				break;
+			}
+		}
+	}
+		closedir(dir);
+
+	/*while (true) {
+
 		if (buffer[0] == '0') {
 			w.answers(exitPR);
 			return -3;
@@ -234,7 +251,9 @@ int connectFiles::defaultConf(string &d) {
 			ini.SetValue("Main", "InputFile", c_full1);
 			break;
 		}
-	}
+	}*/
+
+
 	w.w("");
 	if (ini.SaveFile(c_full) == 0)	w.answers(confCreated);
 	if (this->hell() == 0) w.answers(tmplCreated); 
@@ -243,7 +262,7 @@ int connectFiles::defaultConf(string &d) {
 }
 void connectFiles::cpst(char *dest, char *src) {
 	*fullsz = strlen(dest) + 2 + strlen(src);
-	for (unsigned int i = strlen(dest), z = 0; i < *fullsz; i++) {
+	for (size_t i = strlen(dest), z = 0; i < *fullsz; i++) {
 		dest[i] = src[z++];
 	}
 }
@@ -252,8 +271,9 @@ bool connectFiles::CreateDir(TCHAR * sPathTo)
 	while (CreateDirectory(sPathTo, NULL) == FALSE)
 	{
 		TCHAR   sTemp[MAX_PATH];
-		int k = strlen(sPathTo);
-		strcpy_s(sTemp, sPathTo);
+		
+		size_t k = _tcslen(sPathTo);
+		_tcscpy_s(sTemp, sPathTo);
 
 		while (CreateDirectory(sTemp, NULL) != TRUE)
 		{
@@ -274,21 +294,26 @@ void connectFiles::mkstr(int e) {
 	case -1: {
 		memcpy(c_defdir, defdir.c_str(), sizeof(defdir));
 		memcpy(c_defconf, defconf.c_str(), sizeof(defconf));
+		break;
 	}
 	case 0: {
 		memcpy(c_full, c_defconf, sizeof(defconf));
+		break;
 	}
 	case 1: {
 		memcpy(c_full1, c_defdir, sizeof(defdir));
 		cpst(c_full1, chr1);
+		break;
 	}
 	case 2: {
 		memcpy(c_full2, c_defdir, sizeof(defdir));
 		cpst(c_full2, chr2);
+		break;
 	}
 	case 3: {
 		memcpy(c_full3, c_defdir, sizeof(defdir));
 		cpst(c_full3, chr3);
+		break;
 	}
 	default: {
 
