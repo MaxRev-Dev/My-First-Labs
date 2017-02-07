@@ -88,7 +88,6 @@
     <ClCompile Include="writer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="myDll\Header.h" />
     <ClInclude Include="MyLib.h" />
     <ClInclude Include="classes.h" />
   </ItemGroup>

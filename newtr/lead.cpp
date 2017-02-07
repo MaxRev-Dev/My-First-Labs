@@ -1,5 +1,6 @@
 #include "classes.h"
-
+#include "MyLib.h"
+using namespace std;
 string defdir = ".\\sources_newtr\\";
 int main(int argc, char* argv[])
 {

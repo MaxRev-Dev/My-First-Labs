@@ -1,6 +1,5 @@
 #pragma once
-namespace NewTextGenWForms {
-	textGen::textGen(std::string &dfdir)
+	textGen::textGen(string &dfdir)
 	{
 		ctr.push_back(64);
 		mirror = ctr;
@@ -19,7 +18,7 @@ namespace NewTextGenWForms {
 		(lastChr == endOfR) ? ctrl.push_back('A') : lastChr++;
 		clicker = true;
 	}
-	void textGen::nextMark(std::ifstream &tmp)
+	void textGen::nextMark(ifstream &tmp)
 	{
 		string itr;
 		char cr;
@@ -169,4 +168,3 @@ namespace NewTextGenWForms {
 		case 2: tx = rr;
 		}
 	}
-}
