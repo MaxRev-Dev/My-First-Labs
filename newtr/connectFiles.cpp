@@ -1,4 +1,5 @@
 #include "classes.h"
+using namespace NewTextGenWForms;
 
 writer<string> w;
 CSimpleIniA ini;
@@ -8,7 +9,7 @@ connectFiles::connectFiles(string &dfdir)
 	strcpy_s(buffer, "");
 	strcpy_s(chr1 , "tests.txt");
 	strcpy_s(chr2  ,"index.html");
-	strcpy_s(chr3 , "res.html");
+	strcpy_s(chr3 , "template.html");
 	strcpy_s(chr4 ,"/*mark*/");
 }
 int connectFiles::IO(string&str, string key) {
@@ -37,8 +38,8 @@ int connectFiles::init(string &d) {
 			w.w("	|	   Config.ini знайдено!			|");
 			string tmp;
 			if (IO(tmp, "InputFile") == -3) return -3;
-			cout<<"	|		 ‘айл "<<tmp<<"		|"<<endl;
-			w.w("	|	   якщо н≥ то введ≥ть ≥ншу назву	|");
+			cout<<"		  ‘айл "<<tmp<<"	"<<endl;
+			w.w("		   якщо н≥ то введ≥ть ≥ншу назву	");
 			cout << "		";
 			cin.getline(buffer, 256);
 			mkstr(-1);
