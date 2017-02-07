@@ -2,9 +2,26 @@
 #include <windows.h>
 #include <iomanip>
 #include <conio.h>
-#include "extend.h"
 using namespace std;
-
+template <class Type>
+Type inputCheck(Type &number)
+{
+	while (true) {
+		cin >> number;
+		if (cin.peek() == '\n' || cin.peek() == ',' || cin.peek() == '.') {
+			cin.get();
+			break;
+		}
+		else {
+			cout << "\nПомилка! Неприпустимий символ." << endl;
+			cout << "Спробуйте ще раз:";
+			cin.clear();
+			cin.sync();
+			cout << endl;
+		}
+	}
+	return number;
+}
 int main()
 {
 	SetConsoleCP(1251);
