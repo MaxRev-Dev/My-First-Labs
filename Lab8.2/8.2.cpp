@@ -7,9 +7,9 @@ int main() {
 	SetConsoleOutputCP(1251);
 	int coll, row, chk(NULL);
 	std::cout << "---->> Введіть розмір масиву" << std::endl;
-	std::cout << "Кількість стовпців: ";
+	std::cout << "Кількість рядків : ";
 	std::cin >> coll;
-	std::cout << "Кількість рядків: ";
+	std::cout << "Кількість стовпців: ";
 	std::cin >> row;
 	int **arr = new int *[coll];
 	for (int i = 0; i < coll; i++) {
@@ -29,6 +29,11 @@ int main() {
 			if (chk < arr[i][j]) chk = arr[i][j];
 		} std::cout << "Стовчик " << i << "  максимум->  " << chk << std::endl;
 		chk = -999999;
+	}
+	for (int i = 0; i < coll; i++) {
+		for (int j = 0; j < row; j++) {
+			std::cout << arr[i][j];
+	}std::cout  << std::endl;
 	}
 
 
