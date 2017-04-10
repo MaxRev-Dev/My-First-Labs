@@ -13,7 +13,7 @@
 	}
 	void textGen::nextChr(vector<char> &ctrl)
 	{
-		char endOfR = 'Z';
+		register char endOfR = 'Z';
 		char &lastChr = ctrl.at(ctrl.size() - 1);
 		(lastChr == endOfR) ? ctrl.push_back('A') : lastChr++;
 		clicker = true;
@@ -21,7 +21,7 @@
 	void textGen::nextMark(ifstream &tmp)
 	{
 		string itr;
-		char cr;
+		register char cr;
 		tmp.seekg(x);
 		while (true)
 		{
@@ -60,7 +60,7 @@
 		fo << "				<div class=\"panel-body\">";
 		struct tm newtime;
 		time_t now = time(0);
-		char buf[80];
+		register char buf[80];
 		localtime_s(&newtime, &now);
 		strftime(buf, 80, "%A - %d/%m/%y - %X", &newtime);
 		fo << "					<p>Generated on " << buf << "</p>\n";
@@ -80,7 +80,7 @@
 
 	void textGen::getTitle(ifstream &arch)
 	{
-		char sym = 0, pr = 0, symb = 0;
+		register char sym = 0, pr = 0, symb = 0;
 
 		while (sym != '{')
 		{
@@ -101,8 +101,8 @@
 	void textGen::getQues(ifstream &arch) {
 		string sg = "<strong>";
 		string sgx = "</strong>";
-		char sym = 0, pr = 0;
-		int j = 1;
+		register char sym = 0, pr = 0;
+		register int j = 1;
 		while (true)
 		{
 			arch.get(sym);
@@ -111,7 +111,7 @@
 		if (sym == '%' || sym == '~')
 		{
 			if (sym == '%') {
-				size_t s = sg.size();
+				register size_t s = sg.size();
 				for (size_t i = 0; i < s; ++i) vcr.push_back(sg.at(i));
 				j = 0;
 			}
@@ -131,7 +131,7 @@
 				vcr.push_back(sym);
 			}
 			if (j == 0) {
-				size_t s = sgx.size();
+				register size_t s = sgx.size();
 				for (size_t i = 0; i < s; ++i) vcr.push_back(sgx.at(i));
 				j = 1;
 			}
@@ -162,7 +162,7 @@
 		tx = arch.tellg();
 		arch.seekg(tx - 1);
 	}
-	void textGen::getCartPos(long long&rr, int sw) {
+	void textGen::getCartPos(long long&rr, register int sw) {
 		switch (sw) {
 		case 1: x = rr;
 		case 2: tx = rr;

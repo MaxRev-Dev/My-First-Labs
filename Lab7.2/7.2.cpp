@@ -3,7 +3,6 @@
 #include <math.h>
 #include <windows.h>
 #include <iomanip>
-#include <graphics.h>
 
 using namespace std;
 

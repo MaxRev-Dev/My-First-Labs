@@ -1,4 +1,5 @@
 #include "classes.h"
+#include "MyLib.h"
 	writer<string> w;
 	CSimpleIniA ini;
 	connectFiles::connectFiles(string &dfdir)

@@ -1,8 +1,8 @@
 #include "classes.h"
-#include "MyLib.h"
+void prompt();
 using namespace std;
 string defdir = ".\\sources_newtr\\";
-int main(int argc, char* argv[])
+int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
@@ -122,6 +122,15 @@ int main(int argc, char* argv[])
 	cout << "	|		---MaxRev---			|"<<endl;
 	cout << "	|_______________________________________________|";
 	_getch();
-
+	prompt();
 	return 0;
 }
+
+void prompt() {
+	std::cout << std::endl << "ўе раз?? " << "ESC - вих≥д" << std::endl;
+	_getch();
+	if (GetAsyncKeyState(VK_ESCAPE)) exit(0);
+	else main();
+}
+
+

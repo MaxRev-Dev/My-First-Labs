@@ -3,9 +3,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <time.h>
+#include <ctime>
 #include <conio.h>
-#include <time.h>
 #include <tchar.h>
 using namespace std;
 #include "writer.h"
@@ -22,7 +21,7 @@ using namespace std;
 		char chr4[15];
 		DIR *dir;
 		struct dirent *ent;
-		size_t *fullsz = new size_t;
+		int *fullsz = new int;
 		string	str;
 		void mkstr(int);
 

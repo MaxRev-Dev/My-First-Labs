@@ -8,7 +8,7 @@ void prompt();
 /*Кількіть масивів та їх довжина*/
 char** readFile(int _qnt, int _length) {
 
-	std::ifstream ars("C:\\Users\\MaxRev\\Desktop\\MyArs10.1.txt");
+	std::ifstream ars("C:\\Users\\MaxRev\\Desktop\\SHORTCUTS\\MyArs10.1.txt");
 
 	
 	if (ars.is_open())
