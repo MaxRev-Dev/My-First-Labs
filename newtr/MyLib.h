@@ -1,5 +1,10 @@
+#include "classes.h"
 #pragma once
-	textGen::textGen(string &dfdir)
+struct anim {
+	string str;
+}an;
+
+textGen::textGen(string &dfdir)
 	{
 		ctr.push_back(64);
 		mirror = ctr;
@@ -11,14 +16,14 @@
 		mark = ini.GetValue("Main", "Marker", NULL);
 
 	}
-	void textGen::nextChr(vector<char> &ctrl)
+void textGen::nextChr(vector<char> &ctrl)
 	{
 		register char endOfR = 'Z';
 		char &lastChr = ctrl.at(ctrl.size() - 1);
 		(lastChr == endOfR) ? ctrl.push_back('A') : lastChr++;
 		clicker = true;
 	}
-	void textGen::nextMark(ifstream &tmp)
+void textGen::nextMark(ifstream &tmp)
 	{
 		string itr;
 		register char cr;
@@ -55,7 +60,7 @@
 		tmp.seekg(x + 1);
 		x = tmp.tellg();
 	}
-	void textGen::inTime(ofstream &fo) {
+void textGen::inTime(ofstream &fo) {
 		fo << "			<div class=\"footer center panel panel-success\">\n";
 		fo << "				<div class=\"panel-body\">";
 		struct tm newtime;
@@ -69,102 +74,124 @@
 		fo << "				</div>";
 		fo << "			</div>";
 	}
-	void textGen::vecTF(ofstream &fl)
+void textGen::vecTF(ofstream &fl)
+{
+	size_t s = vcr.size();
+	for (size_t i = 0; i < s; ++i)
 	{
-		size_t s = vcr.size();
-		for (size_t i = 0; i < s; ++i)
-		{
-			fl << vcr[i];
-		} vcr.clear();
-	}
+		fl << vcr[i];
+	} vcr.clear();
+}
 
-	void textGen::getTitle(ifstream &arch)
+void textGen::getTitle(ifstream &arch)
+{
+	register char sym = 0, pr = 0, symb = 0;
+
+	while (sym != '{')
 	{
-		register char sym = 0, pr = 0, symb = 0;
-
-		while (sym != '{')
+		vcr.push_back(sym);
+		if (sym == '/')
 		{
-			vcr.push_back(sym);
+			arch.get(sym);
 			if (sym == '/')
 			{
-				arch.get(sym);
-				if (sym == '/')
-				{
-					vcr.pop_back();
-					vcr.pop_back();
-				}
-				else vcr.push_back(sym);
+				vcr.pop_back();
+				vcr.pop_back();
 			}
-			arch.get(sym);
+			else vcr.push_back(sym);
 		}
+		arch.get(sym);
 	}
-	void textGen::getQues(ifstream &arch) {
-		string sg = "<strong>";
-		string sgx = "</strong>";
-		register char sym = 0, pr = 0;
-		register int j = 1;
+}
+void textGen::getQues(ifstream &arch) {
+	string sg = "<strong>";
+	string sgx = "</strong>";
+	register char sym = 0, pr = 0;
+	register int j = 1;
+	while (true)
+	{
+		arch.get(sym);
+		if (sym == '~' || sym == '%' || sym == '}' || sym == '-') break;
+	}
+	if (sym == '%' || sym == '~')
+	{
+		if (sym == '%') {
+			register size_t s = sg.size();
+			for (size_t i = 0; i < s; ++i) vcr.push_back(sg.at(i));
+			j = 0;
+		}
 		while (true)
 		{
 			arch.get(sym);
-			if (sym == '~' || sym == '%' || sym == '}' || sym == '-') break;
-		}
-		if (sym == '%' || sym == '~')
-		{
-			if (sym == '%') {
-				register size_t s = sg.size();
-				for (size_t i = 0; i < s; ++i) vcr.push_back(sg.at(i));
-				j = 0;
-			}
-			while (true)
+			/*if (sym == '\\')
 			{
 				arch.get(sym);
-				if (sym == '\\')
-				{
-					arch.get(sym);
-					vcr.push_back(sym);
-				}
-				if (sym == '~' || sym == '%' || sym == '}')
-				{
-					vcr.pop_back();
-					break;
-				}
 				vcr.push_back(sym);
+			}*/
+			if (sym == '~' || sym == '%' || sym == '}')
+			{
+				vcr.pop_back();
+				break;
 			}
-			if (j == 0) {
-				register size_t s = sgx.size();
-				for (size_t i = 0; i < s; ++i) vcr.push_back(sgx.at(i));
-				j = 1;
-			}
-		}
-
-		if (sym == '}')
-		{
-			tx = arch.tellg();
-			arch.seekg(tx - 3);
-			arch.get(sym);
 			vcr.push_back(sym);
+		}
+		if (j == 0) {
+			register size_t s = sgx.size();
+			for (size_t i = 0; i < s; ++i) vcr.push_back(sgx.at(i));
+			j = 1;
+		}
+	}
 
-			arch.seekg(tx);
-			int j = 0;
-			while (j < 5) {
-				arch.get(sym);
-				if (!arch) {
-					arch.close();
-					break;
-				} j++;
-			}
-			if (arch) {
-				tx = arch.tellg();
-				tx -= j;
-				arch.seekg(tx);
-			}
-		}
+	if (sym == '}')
+	{
 		tx = arch.tellg();
-		arch.seekg(tx - 1);
-	}
-	void textGen::getCartPos(long long&rr, register int sw) {
-		switch (sw) {
-		case 1: x = rr;
-		case 2: tx = rr;
+		arch.seekg(tx - 3);
+		arch.get(sym);
+		vcr.push_back(sym);
+
+		arch.seekg(tx);
+		int j = 0;
+		while (j < 5) {
+			arch.get(sym);
+			if (!arch) {
+				arch.close();
+				break;
+			} j++;
+		}
+		if (arch) {
+			tx = arch.tellg();
+			tx -= j;
+			arch.seekg(tx);
 		}
 	}
+	tx = arch.tellg();
+	arch.seekg(tx - 1);
+}
+void textGen::getCartPos(long long&rr, register int sw) {
+	switch (sw) {
+	case 1: x = rr;
+	case 2: tx = rr;
+	}
+}
+void textGen::startThreadAnim() {
+	an.str = "-/|\\-/|\\";
+	this->tick = true;
+
+	th2 = thread(&textGen::animate, ref(*this));
+	th2.detach();
+}
+void textGen::stopThreadAnim()
+{
+	this->tick=false;
+}
+void textGen::animate() {
+	cout << "\t\t\tЗачекайте..." << endl;
+	while (tick) {
+		
+		for (size_t i = 0; i < an.str.size(); ++i) {
+			cout << "\t\t\t\t" << an.str.at(i) << "\r";
+			Sleep(150);
+		}
+	} for (int i = 0; i < 40; ++i)cout << " ";
+	cout <<endl<< endl;
+}

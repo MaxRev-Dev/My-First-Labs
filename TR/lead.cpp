@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
 				vec_part.push_back(pr);
 				sup.get(pr);
 			} sup.get(pr);
-			for (int i = 0; i < vec_part.size(); ++i)
+			for (size_t i = 0; i < vec_part.size(); ++i)
 			{
 				ht << vec_part[i];
 			} vec_part.clear(); //to file			
@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
 					tx.get(sym);
 				} tx.get(sym);
 			}
-			for (int i = 0; i < vec_part.size(); ++i)
+			for (size_t i = 0; i < vec_part.size(); ++i)
 			{
 				ht << vec_part[i];
 			} vec_part.clear(); //to file
@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
 			} sup.get(pr);
 			 
 			vec_part.push_back(count_ques);
-			for (int i = 0; i < vec_part.size(); ++i)
+			for (size_t i = 0; i < vec_part.size(); ++i)
 			{
 				ht << vec_part[i];
 			} vec_part.clear(); //to file
@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
 				vec_part.push_back(pr);
 				sup.get(pr);
 			} sup.get(pr);
-			for (int i = 0; i < vec_part.size(); ++i)
+			for (size_t i = 0; i < vec_part.size(); ++i)
 			{
 				ht << vec_part[i];
 			} vec_part.clear(); //to file
@@ -104,7 +104,7 @@ int main(int argc, char* argv[])
 					tx.get(sym);
 				}tx.get(sym);
 
-				for (int i = 0; i < vec_part.size(); ++i)
+				for (size_t i = 0; i < vec_part.size(); ++i)
 				{
 					ht << vec_part[i];
 				} vec_part.clear(); //to file
@@ -113,18 +113,18 @@ int main(int argc, char* argv[])
 					vec_part.push_back(pr);
 					sup.get(pr);
 				} sup.get(pr);
-				for (int i = 0; i < vec_part.size(); ++i)
+				for (size_t i = 0; i < vec_part.size(); ++i)
 				{
 					ht << vec_part[i];
 				} vec_part.clear(); //to file
 
 
-				for (int i = 0; i < vec_part.size(); ++i)
+				for (size_t i = 0; i < vec_part.size(); ++i)
 				{
 					ht << vec_part[i];
 				} vec_part.clear(); //to file
 
-				for (int i = 0; i < vec_ques.size(); ++i)
+				for (size_t i = 0; i < vec_ques.size(); ++i)
 				{
 					ht << vec_ques[i];
 				} vec_ques.clear();
@@ -142,7 +142,7 @@ int main(int argc, char* argv[])
 					if (sym == '=' || sym == '}' || sym == '{')	vec_part.push_back(sym);
 				}
 			} tx.get(sym);
-			for (int i = 0; i < vec_part.size(); ++i)
+			for (size_t i = 0; i < vec_part.size(); ++i)
 			{
 				ht << vec_part[i];
 			} vec_part.clear();
@@ -160,7 +160,7 @@ int main(int argc, char* argv[])
 				if (sym == '-')	break;
 			}
 
-			for (int i = 0; i < vec_part.size(); ++i)
+			for (size_t i = 0; i < vec_part.size(); ++i)
 			{
 				ht << vec_part[i];
 			} vec_part.clear(); //to file
@@ -180,7 +180,7 @@ int main(int argc, char* argv[])
 		sup.get(pr);
 	} sup.get(pr);
 
-	for (int i = 0; i < vec_part.size(); ++i)
+	for (size_t i = 0; i < vec_part.size(); ++i)
 	{
 		ht << vec_part[i];
 	} vec_part.clear(); //to file

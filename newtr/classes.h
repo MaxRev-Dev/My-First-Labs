@@ -6,10 +6,14 @@
 #include <ctime>
 #include <conio.h>
 #include <tchar.h>
+#include <thread>
+#include <atomic>
+
 using namespace std;
 #include "writer.h"
 #include "SimpleIni.h"
 #include "dirent.h"
+
 
 	class connectFiles
 	{
@@ -23,9 +27,10 @@ using namespace std;
 		struct dirent *ent;
 		int *fullsz = new int;
 		string	str;
-		void mkstr(int);
+		
 
 	public:
+		void mkstr(int);
 		connectFiles(string &);
 		int IO(string&, string), e;
 		int init(string &);
@@ -55,7 +60,11 @@ using namespace std;
 		int c = 1, i = 1;
 		long long x = 0, tx = 0, curTP = 0;
 		char cr = 0;
+		
 	public:
+		bool animateThis;
+		thread th2;
+		atomic<bool> tick;
 		vector<char>vcr;
 		textGen(string &);
 		void nextChr(vector<char> &);
@@ -64,6 +73,8 @@ using namespace std;
 		void getTitle(ifstream &);
 		void getQues(ifstream &);
 		void getCartPos(long long&, int);
+		void startThreadAnim();
+		void stopThreadAnim();
+		void animate();
 		void inTime(ofstream&);
 	};
-

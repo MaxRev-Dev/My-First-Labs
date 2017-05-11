@@ -26,7 +26,7 @@ int main() {
 	unsigned int vector_size = vecGrab.size();
 
 	cout << "Ваш вектор." << endl;
-	for (int i = 0; i < vector_size; i++) {
+	for (size_t i = 0; i < vector_size; i++) {
 		cout << vecGrab[i] << endl;
 	}
 

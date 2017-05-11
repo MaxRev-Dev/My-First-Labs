@@ -3,8 +3,8 @@
 int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	RF file;
-	readFile(UniFy(init(file)));
+	Student *x = new Student;
+	readFile(ifstream(path));
 	_getch();
 	return 0;
 }

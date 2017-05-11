@@ -18,9 +18,15 @@
     <ClCompile Include="12.3.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
+    <ClCompile Include="helper.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="classes.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="extend.h">
+    <ClInclude Include="classes.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>

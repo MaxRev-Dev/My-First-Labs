@@ -7,6 +7,7 @@
 #include <string>
 #include <map>
 #include "D:\important!labs_path\filecfg.h"
+
 #define MIN_WORDS_IN_FILE 15
 #define MAX_WORDS_IN_FILE 20
 using namespace std;

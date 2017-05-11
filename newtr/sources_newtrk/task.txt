@@ -1,0 +1,71 @@
+// ¬каж≥ть функц≥њ €к≥ в≥дкривають файл дл€ читанн€ {
+%fstream();
+~ifstream();
+%ofsream();
+~iostream();
+~stream();
+}
+
+// який режим при в≥дкритт≥ файлу, очищуЇ його {
+~ate;
+%trunc;
+~app;
+~binary;
+~cut;
+}
+
+// ќператор виведенн€(зчитуванн€) « файлу {
+~ <<;
+% >>;
+~  <<;
+~ >;
+~ >>>;
+}
+
+// як в≥дкрити файл "fout" {
+% fstream fout("...");
+~ stream fout("...");
+~ fout("...");
+% fstream fout; fout.open("...");
+~ fstream("...");
+} 
+
+// ќператори, €к≥ використовуютьс€ дл€ форматуванн€ файлу {
+~ \n,/f;
+% \n, \t;
+~ \n, \tab;
+~ \a, \p, \l;
+~ \r, \v, \n;
+}
+
+// ‘ункц≥њ позиц≥онуванн€ по файлу {
+~ seek();
+% seekp;
+~ seek();
+%seekg();
+~ seekf();
+}
+
+// як записати ≥нформац≥ю в файл "fout" {
+% fout << "...";
+~ cout << "...";
+% string str; <br> fout << str;  
+~ fout >> "...";
+~ fout.put("...");
+}
+
+// як перев≥рити чи в≥дкритий файл {
+~ if (close(fout));
+~ if (fout == closed) ;
+% if (!fout) ;
+% if (!fout.is_open()) ;
+~ if (fout.closed) ;
+}
+
+// як закрити файл "fout" {
+~ close(fout);
+~ fout = close;
+% fout.close();
+~ fout(close);
+~ fout->close;
+}

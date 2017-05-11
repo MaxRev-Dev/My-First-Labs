@@ -1,5 +1,6 @@
 #include "classes.h"
 #include "MyLib.h"
+
 	writer<string> w;
 	CSimpleIniA ini;
 	connectFiles::connectFiles(string &dfdir)
@@ -36,21 +37,27 @@
 			str = ent->d_name;
 			if (str == defconf) {
 				w.w("	|	   Config.ini знайдено!			|");
-				string tmp;
+				string tmp,defer;
 				if (IO(tmp, "InputFile") == -3) return -3;
 				cout << "		  ‘айл " << tmp << "	" << endl;
 				w.w("		   якщо н≥ то введ≥ть ≥ншу назву	");
 				cout << "		";
-				cin.getline(buffer, 256);
+				getline(cin,defer);
+				if (defer.find_last_of(".") != string::npos) {
+					size_t deftmp = defer.find_last_of(".");
+					defer = defer.substr(0, deftmp);
+				}
+				 
 				mkstr(-1);
 				if (IO(tmp, "ThisDir") == -3) return -3;
 				memcpy(c_defdir, tmp.c_str(), sizeof(defdir));
 				memcpy(c_full1, c_defdir, sizeof(defdir));
-				if (buffer[0] == 0) {
+
+				if (defer == "") {
 					break;
 				}
 				else {
-					cpst(this->c_full1, buffer);
+					cpst(this->c_full1, (char*)defer.c_str());
 					cpst(this->c_full1, ".txt");
 					ini.SetValue("Main", "InputFile", c_full1);
 					ini.SaveFile(c_defconf);
@@ -70,7 +77,9 @@
 		}
 
 		if (!opendir(defdir.c_str())) {
-			w.w("’м.. ўось п≥шло не так( ўось з назвою папки");
+			w.w("\t\t’м.. ўось п≥шло не так( \n \t\tѕапка не ≥снуЇ!");
+			w.answers(emergency);
+			_getch();
 			return -3;
 		}
 
@@ -263,7 +272,7 @@
 	}
 	void connectFiles::cpst(char *dest, char *src) {
 		*fullsz = strlen(dest) + 2 + strlen(src);
-		for (size_t i = strlen(dest), z = 0; i < *fullsz; i++) {
+		for (int i = strlen(dest), z = 0; i < *fullsz; i++) {
 			dest[i] = src[z++];
 		}
 	}

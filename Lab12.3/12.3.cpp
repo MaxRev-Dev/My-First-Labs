@@ -1,7 +1,12 @@
-#include "extend.h"
+#include "classes.h"
 
+void GR();
 int main() {
-
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	GR();
+	_getch();
+	return 0;
 }
 
 
